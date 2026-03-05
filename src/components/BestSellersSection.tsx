@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Heart, Volume2, VolumeX } from "lucide-react";
-import catHooks from "@/assets/cat-hooks.png";
 
 const products = [
   {
@@ -22,7 +21,7 @@ const products = [
   {
     name: "Raphael Handle",
     priceRange: "₹999 – ₹2,399",
-    image: catHooks,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
   },
 ];
 

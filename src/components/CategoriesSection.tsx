@@ -1,12 +1,9 @@
 import { motion } from "framer-motion";
-import catHandles from "@/assets/cat-handles.png";
-import catKnobs from "@/assets/cat-knobs.png";
-import catHooks from "@/assets/cat-hooks.png";
 
 const categories = [
-  { title: "Handles", image: catHandles },
-  { title: "Knobs", image: catKnobs },
-  { title: "Hooks", image: catHooks },
+  { title: "Handles", image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg" },
+  { title: "Knobs", image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg" },
+  { title: "Hooks", image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg" },
 ];
 
 export const CategoriesSection = () => (

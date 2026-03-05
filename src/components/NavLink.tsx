@@ -1,34 +1,30 @@
 import { useState } from "react";
 import { Heart } from "lucide-react";
 import { motion } from "framer-motion";
-import shopFavDoor from "@/assets/shop-fav-door.png";
-import catKnobs from "@/assets/cat-knobs.png";
-import catHandles from "@/assets/cat-handles.png";
-import catHooks from "@/assets/cat-hooks.png";
 
 const favourites = [
   {
     name: "Ethereal Wing Handle",
     price: "₹7,299",
-    image: shopFavDoor,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     tag: "Bestseller",
   },
   {
     name: "Royal Gold Knob",
     price: "₹1,499",
-    image: catKnobs,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     tag: "New",
   },
   {
     name: "Milano Slim Handle",
     price: "₹2,199",
-    image: catHandles,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     tag: "New",
   },
   {
     name: "Copperline Hook Set",
     price: "₹3,499",
-    image: catHooks,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     tag: "Limited",
   },
 ];

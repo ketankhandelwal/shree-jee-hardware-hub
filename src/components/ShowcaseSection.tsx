@@ -1,20 +1,16 @@
 import { useRef } from "react";
 import { ChevronRight } from "lucide-react";
-import catHandles from "@/assets/cat-handles.png";
-import catKnobs from "@/assets/cat-knobs.png";
-import catHooks from "@/assets/cat-hooks.png";
-import heroImage from "@/assets/hero-hardware-new.png";
-import ourStory from "@/assets/our-story.jpg";
+
 
 const collections = [
   {
-    image: heroImage,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     dark: true,
     overlayText: null,
     name: "Cabinet Handles"
   },
   {
-    image: catHooks,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     dark: false,
     name: "Telescopic Channel",
     overlayText: {
@@ -23,7 +19,7 @@ const collections = [
     },
   },
   {
-    image: catHandles,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     dark: false,
     name: "Cupboard Hinges",
     overlayText: {
@@ -34,7 +30,7 @@ const collections = [
     },
   },
   {
-    image: catKnobs,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Stainless Steel Handle",
     dark: true,
     overlayText: {
@@ -43,19 +39,19 @@ const collections = [
     },
   },
   {
-    image: ourStory,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Stainless Steel Aldrops",
     dark: false,
     overlayText: null,
   },
   {
-    image: heroImage,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Knob",
     dark: true,
     overlayText: null,
   },
   {
-    image: catHooks,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Chest Handle",
     dark: false,
     overlayText: {
@@ -64,7 +60,7 @@ const collections = [
     },
   },
   {
-    image: catHandles,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Hinges",
     dark: false,
     overlayText: {
@@ -75,7 +71,7 @@ const collections = [
     },
   },
   {
-    image: catKnobs,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Sofa Leg",
     dark: true,
     overlayText: {
@@ -84,43 +80,43 @@ const collections = [
     },
   },
   {
-    image: ourStory,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Curtain Bracket",
     dark: false,
     overlayText: null,
   },
   {
-    image: ourStory,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Tower Bolt",
     dark: false,
     overlayText: null,
   },
   {
-    image: ourStory,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Door Magnet & Door Closer",
     dark: false,
     overlayText: null,
   },
   {
-    image: ourStory,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Multipurpose & Cupboard Lock",
     dark: false,
     overlayText: null,
   },
   {
-    image: ourStory,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Kitchen Accessories",
     dark: false,
     overlayText: null,
   },
   {
-    image: ourStory,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Hook",
     dark: false,
     overlayText: null,
   },
   {
-    image: ourStory,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Other Fittings & SS Pull, Mortise, Screw",
     dark: false,
     overlayText: null,

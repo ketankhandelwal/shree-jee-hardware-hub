@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-hardware-new.png";
 
 export const HeroSection = () => (
   <section className="relative h-[88vh] min-h-[580px] overflow-hidden">
     <img
-      src={heroImage}
+      src="https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg"
       alt="Premium brass handles and knobs collection"
       className="absolute inset-0 w-full h-full object-cover"
       loading="eager"

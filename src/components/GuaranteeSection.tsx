@@ -1,9 +1,5 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
-import topSeller1 from "@/assets/top-seller-knob1.png";
-import topSeller2 from "@/assets/top-seller-knob2.png";
-import topSeller3 from "@/assets/top-seller-tbar.png";
-import catHandles from "@/assets/cat-handles.png";
 
 const topSellers = [
   {
@@ -29,7 +25,7 @@ const topSellers = [
   {
     name: "Classic Round Knob",
     price: "₹549",
-    image: topSeller1,
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
   },
 ];
 
