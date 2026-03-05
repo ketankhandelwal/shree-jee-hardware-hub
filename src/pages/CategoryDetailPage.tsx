@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { categories } from "@/data/categories";
 import { getProducts } from "@/data/products";
+import { useSEO } from "@/hooks/useSEO";
 
 const CategoryDetailPage = () => {
     const { categoryId } = useParams<{ categoryId: string }>();
@@ -14,8 +15,42 @@ const CategoryDetailPage = () => {
 
     const current = categories.find((c) => c.id === categoryId);
     const products = getProducts(categoryId ?? "");
-    // Other categories shown in the bubble row
     const others = categories.filter((c) => c.id !== categoryId);
+
+    // Dynamic per-category SEO
+    useSEO({
+        title: current
+            ? `${current.label} in Alwar | Buy ${current.label} Online — Shree Jee Hardware Hub`
+            : "Hardware Products | Shree Jee Hardware Hub Alwar",
+        description: current
+            ? `Buy premium ${current.label} in Alwar, Rajasthan at Shree Jee Hardware Hub. Best quality ${current.label} at unbeatable prices. Call +91 820 981 5805. Serving Alwar & surrounding areas.`
+            : "Premium hardware products in Alwar, Rajasthan.",
+        canonical: `https://shreejihardwares.com/products/${categoryId}`,
+        schema: current ? {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": `${current.label} — Shree Jee Hardware Hub`,
+            "description": `Premium ${current.label} available at Shree Jee Hardware Hub, Alwar, Rajasthan`,
+            "numberOfItems": products.length,
+            "itemListElement": products.map((p, i) => ({
+                "@type": "ListItem",
+                "position": i + 1,
+                "name": p.name,
+                "item": {
+                    "@type": "Product",
+                    "name": p.name,
+                    "image": p.image,
+                    "offers": {
+                        "@type": "Offer",
+                        "price": p.price.replace(/[^0-9]/g, ""),
+                        "priceCurrency": "INR",
+                        "availability": "https://schema.org/InStock",
+                        "seller": { "@type": "Organization", "name": "Shree Jee Hardware Hub" }
+                    }
+                }
+            }))
+        } : undefined,
+    });
 
     const scrollBubbles = (dir: "left" | "right") => {
         if (!scrollRef.current) return;

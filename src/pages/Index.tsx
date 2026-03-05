@@ -13,8 +13,14 @@ import { ConsultationSection } from "@/components/ConsultationSection";
 import { CatalogueSection } from "@/components/CatalogueSection";
 import { LocationSection } from "@/components/LocationSection";
 import { Footer } from "@/components/Footer";
+import { useSEO } from "@/hooks/useSEO";
 
 const Index = () => {
+  useSEO({
+    title: "Shree Jee Hardware Hub | Best Hardware Shop in Alwar, Rajasthan",
+    description: "Alwar's top-rated hardware store since 2019. Shop premium cabinet handles, door handles, knobs, hinges, hooks, kitchen accessories & more. Call +91 820 981 5805 or visit us in Alwar, Rajasthan.",
+    canonical: "https://shreejihardwares.com/",
+  });
   return (
     <div className="min-h-screen bg-background">
       {/* Scrolling announcement ticker */}

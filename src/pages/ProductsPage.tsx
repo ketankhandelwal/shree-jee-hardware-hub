@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { categories } from "@/data/categories";
+import { useSEO } from "@/hooks/useSEO";
 
 const LotusIcon = () => (
     <svg width="32" height="32" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,6 +17,11 @@ const LotusIcon = () => (
 );
 
 const ProductsPage = () => {
+    useSEO({
+        title: "Hardware Products in Alwar | Cabinet Handles, Knobs, Hinges & More — Shree Jee Hardware Hub",
+        description: "Browse 16 categories of premium hardware in Alwar — cabinet handles, door handles, knobs, hinges, hooks, aldrops, tower bolts, kitchen accessories & more. Visit Shree Jee Hardware Hub, Alwar, Rajasthan.",
+        canonical: "https://shreejihardwares.com/products",
+    });
     return (
         <div className="min-h-screen bg-background flex flex-col">
             <AnnouncementBar />

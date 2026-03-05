@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { MapPin, Phone, Star, Award, Users, Home } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 /* ─── DATA ────────────────────────── */
 
@@ -16,7 +17,7 @@ const stats = [
 
 const timeline = [
     {
-        year: "2012",
+        year: "2019",
         title: "The Beginning",
         description: "Shree Jee Hardware Hub was founded in Alwar, Rajasthan with a small shop and a big dream — to bring premium quality hardware to every home.",
         image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.42.jpeg",
@@ -143,7 +144,7 @@ const ParallaxHero = () => {
                     <div className="flex items-center justify-center gap-3 mb-6">
                         <div className="w-12 h-px bg-[#c9a84c]/70" />
                         <span className="text-[#c9a84c] text-[10px] tracking-[0.45em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                            SINCE 2012
+                            SINCE 2019
                         </span>
                         <div className="w-12 h-px bg-[#c9a84c]/70" />
                     </div>
@@ -292,6 +293,11 @@ const TimelineImg = ({ item }: { item: typeof timeline[0] }) => (
 
 /* ─── MAIN PAGE ───────────────────── */
 const AboutPage = () => {
+    useSEO({
+        title: "About Shree Jee Hardware Hub | Best Hardware Store in Alwar Since 2019",
+        description: "Learn about Shree Jee Hardware Hub — Alwar's trusted hardware store since 2019. We've served 7000+ homes across Rajasthan with premium handles, hinges, knobs and more. Visit us in Alwar.",
+        canonical: "https://shreejihardwares.com/about",
+    });
     return (
         <div className="min-h-screen bg-background flex flex-col">
             <AnnouncementBar />
@@ -360,7 +366,7 @@ const AboutPage = () => {
                             />
                             {/* Gold accent box */}
                             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-[#1a3a3a] px-6 py-4 text-center shadow-xl z-10">
-                                <p className="text-[#c9a84c] text-2xl font-light" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Est. 2012</p>
+                                <p className="text-[#c9a84c] text-2xl font-light" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Est. 2019</p>
                                 <p className="text-white/50 text-[9px] tracking-widest mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>ALWAR, RAJASTHAN</p>
                             </div>
                         </div>

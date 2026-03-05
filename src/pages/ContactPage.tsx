@@ -13,6 +13,7 @@ import {
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
+import { useSEO } from "@/hooks/useSEO";
 
 // ─── Replace this with YOUR Formspree form ID ───
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
@@ -88,6 +89,11 @@ const LotusIcon = ({ size = 40 }: { size?: number }) => (
 
 // ─── Main Page ───
 const ContactPage = () => {
+    useSEO({
+        title: "Contact Shree Jee Hardware Hub | Hardware Shop in Alwar, Rajasthan",
+        description: "Contact Shree Jee Hardware Hub in Alwar, Rajasthan. Call +91 820 981 5805, visit our showroom, or send us a message. India's finest hardware store serving Alwar and surrounding areas.",
+        canonical: "https://shreejihardwares.com/contact",
+    });
     const [formState, setFormState] = useState({
         name: "",
         email: "",
