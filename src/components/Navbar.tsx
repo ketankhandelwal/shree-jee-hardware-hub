@@ -16,7 +16,7 @@ const navLinks = [
   { label: "CATALOG", href: "/#catalog" },
 ];
 
-const LOGO_URL = "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/misc/Gemini_Generated_Image_rsedw7rsedw7rsed-removebg-preview+(1).png";
+const LOGO_URL = "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/misc/Gemini_Generated_Image_rsedw7rsedw7rsed-removebg-preview+(2).png";
 
 /* ─── Products Mega-Dropdown ─── */
 const ProductsDropdown = ({ onClose }: { onClose: () => void }) => (
