@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Search, Menu, X, User, Heart, ShoppingBag, ChevronDown } from "lucide-react";
+import { Search, Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { categories } from "@/data/categories";
@@ -124,25 +124,17 @@ export const Navbar = () => {
             </button>
           </div>
 
-          {/* Center: Logo */}
-          <img
-            src={LOGO_URL}
-            alt="Shree Jee Hardware Hub"
-            style={{ height: '325px' }}
-            className="w-auto object-contain drop-shadow-sm"
-          />
+          {/* Center: Logo — clicking goes home */}
+          <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
+            <img
+              src={LOGO_URL}
+              alt="Shree Jee Hardware Hub"
+              className="h-16 w-auto object-contain drop-shadow-sm"
+            />
+          </Link>
 
-          {/* Right: Account, Wishlist, Cart */}
           <div className="flex items-center gap-5">
-            <button className="text-white/80 hover:text-white transition-colors hidden md:block" aria-label="Account">
-              <User className="w-5 h-5" />
-            </button>
-            <button className="text-white/80 hover:text-white transition-colors" aria-label="Wishlist">
-              <Heart className="w-5 h-5" />
-            </button>
-            <button className="text-white/80 hover:text-white transition-colors relative" aria-label="Cart">
-              <ShoppingBag className="w-5 h-5" />
-            </button>
+
           </div>
         </div>
 
@@ -180,7 +172,9 @@ export const Navbar = () => {
               );
             }
 
-            const isRouter = href.startsWith("/");
+            // /#catalog and similar hash-path links need a plain <a> so the browser handles the scroll
+            const isHashPath = href.includes("#");
+            const isRouter = href.startsWith("/") && !isHashPath;
             return isRouter ? (
               <Link
                 key={label}
