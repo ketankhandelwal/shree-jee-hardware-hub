@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Search, Menu, X, ChevronDown } from "lucide-react";
+import { Search, Menu, X, ChevronDown, PenLine } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { categories } from "@/data/categories";
@@ -134,6 +134,15 @@ export const Navbar = () => {
           </Link>
 
           <div className="flex items-center gap-5">
+            <a
+              id="write-review-btn"
+              href="https://search.google.com/local/writereview?placeid=ChIJ37DybACZcjkRdWNUjh17Flg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95 text-white/80 hover:text-white transition-colors`}
+            >
+              <PenLine className="h-5 w-5" />
+            </a>
 
           </div>
         </div>
