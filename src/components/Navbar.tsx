@@ -1,97 +1,272 @@
-import { useState } from "react";
-import { Phone, Instagram, Menu, X } from "lucide-react";
+import { useState, useRef } from "react";
+import { Search, Menu, X, User, Heart, ShoppingBag, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import { categories } from "@/data/categories";
+
+// Split 16 categories into 2 columns of 8
+const col1 = categories.slice(0, 8);
+const col2 = categories.slice(8);
 
 const navLinks = [
-  "Door Handles & Knobs",
-  "Sliding Door Kits",
-  "Cabinet Knobs & Pulls",
-  "Bathroom Accessories",
-  "Kitchen Hardware",
+  { label: "HOME", href: "/" },
+  { label: "PRODUCTS", href: "/products", hasDropdown: true },
+  { label: "ABOUT US", href: "/about" },
+  { label: "CONTACT US", href: "/contact" },
+  { label: "CATALOG", href: "/#catalog" },
 ];
+
+const LOGO_URL = "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/misc/Gemini_Generated_Image_rsedw7rsedw7rsed-removebg-preview+(1).png";
+
+/* ─── Products Mega-Dropdown ─── */
+const ProductsDropdown = ({ onClose }: { onClose: () => void }) => (
+  <motion.div
+    initial={{ opacity: 0, y: -8 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -8 }}
+    transition={{ duration: 0.18, ease: "easeOut" }}
+    className="absolute top-full left-1/2 -translate-x-1/2 mt-0 z-50 w-[520px]"
+  >
+    {/* Arrow notch */}
+    <div className="flex justify-center">
+      <div className="w-3 h-3 bg-[#0f2424] rotate-45 -mt-1.5 shadow-sm" />
+    </div>
+
+    {/* Panel */}
+    <div className="bg-[#0f2424] shadow-2xl border border-white/5 p-8">
+      {/* Header */}
+      <div className="flex items-center gap-3 mb-6">
+        <div className="w-6 h-px bg-[#c9a84c]" />
+        <span
+          className="text-[#c9a84c] text-[9px] tracking-[0.4em]"
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+        >
+          ALL CATEGORIES
+        </span>
+      </div>
+
+      {/* 2-column category list */}
+      <div className="grid grid-cols-2 gap-x-10 gap-y-0">
+        {[col1, col2].map((col, ci) => (
+          <ul key={ci} className="space-y-0">
+            {col.map((cat) => (
+              <li key={cat.id}>
+                <Link
+                  to={`/products/${cat.id}`}
+                  onClick={onClose}
+                  className="group flex items-center gap-2 py-[9px] border-b border-white/8 hover:border-white/20 transition-colors duration-150"
+                >
+                  <span
+                    className="text-[11.5px] text-white/60 group-hover:text-white tracking-[0.08em] underline underline-offset-[3px] decoration-white/20 group-hover:decoration-white transition-all duration-150"
+                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                  >
+                    {cat.label}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+
+      {/* View all link */}
+      <div className="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+        <Link
+          to="/products"
+          onClick={onClose}
+          className="text-[10px] tracking-[0.25em] text-[#c9a84c] hover:text-white transition-colors font-semibold"
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+        >
+          VIEW ALL COLLECTIONS →
+        </Link>
+        <span
+          className="text-[9px] text-white/25 tracking-widest"
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+        >
+          {categories.length} CATEGORIES
+        </span>
+      </div>
+    </div>
+  </motion.div>
+);
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleProductsEnter = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setDropdownOpen(true);
+  };
+
+  const handleProductsLeave = () => {
+    closeTimer.current = setTimeout(() => setDropdownOpen(false), 120);
+  };
+
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border">
-      <div className="container flex items-center justify-between h-20">
-        {/* Logo */}
-        <a href="#" className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-lg">SG</span>
-          </div>
-          <div className="hidden sm:block">
-            <h1 className="font-display font-bold text-lg leading-tight tracking-tight">SHREE JEE GURU</h1>
-            <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground">Hardware</p>
-          </div>
-        </a>
-
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors tracking-wide"
+    <header className="sticky top-0 z-50">
+      {/* Main navbar */}
+      <div className="bg-[#1a3a3a]">
+        <div className="relative flex items-center justify-between h-20 px-6 md:px-12">
+          {/* Left: Menu + Search */}
+          <div className="flex items-center gap-5">
+            <button
+              onClick={() => setOpen(!open)}
+              className="text-white/80 hover:text-white transition-colors"
+              aria-label="Menu"
             >
-              {link}
-            </a>
-          ))}
-        </nav>
+              {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+            <button className="text-white/80 hover:text-white transition-colors" aria-label="Search">
+              <Search className="w-5 h-5" />
+            </button>
+          </div>
 
-        {/* Right icons */}
-        <div className="flex items-center gap-4">
-          <a
-            href="tel:+918209815805"
-            className="hidden md:flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-          >
-            <Phone className="w-4 h-4" />
-            <span>+91 820 981 5805</span>
-          </a>
-          <a
-            href="https://www.instagram.com/shreeji_hardware_/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground/80 hover:text-foreground transition-colors"
-          >
-            <Instagram className="w-5 h-5" />
-          </a>
-          <button
-            onClick={() => setOpen(!open)}
-            className="lg:hidden text-foreground"
-          >
-            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Center: Logo */}
+          <img
+            src={LOGO_URL}
+            alt="Shree Jee Hardware Hub"
+            style={{ height: '325px' }}
+            className="w-auto object-contain drop-shadow-sm"
+          />
+
+          {/* Right: Account, Wishlist, Cart */}
+          <div className="flex items-center gap-5">
+            <button className="text-white/80 hover:text-white transition-colors hidden md:block" aria-label="Account">
+              <User className="w-5 h-5" />
+            </button>
+            <button className="text-white/80 hover:text-white transition-colors" aria-label="Wishlist">
+              <Heart className="w-5 h-5" />
+            </button>
+            <button className="text-white/80 hover:text-white transition-colors relative" aria-label="Cart">
+              <ShoppingBag className="w-5 h-5" />
+            </button>
+          </div>
         </div>
+
+        {/* Navigation Links row */}
+        <nav className="hidden lg:flex items-center justify-center gap-10 pb-4">
+          {navLinks.map(({ label, href, hasDropdown }) => {
+            if (hasDropdown) {
+              return (
+                <div
+                  key={label}
+                  className="relative"
+                  onMouseEnter={handleProductsEnter}
+                  onMouseLeave={handleProductsLeave}
+                >
+                  <button
+                    onClick={() => setDropdownOpen((v) => !v)}
+                    className="flex items-center gap-1 text-[11px] font-medium text-white/75 hover:text-white tracking-[0.18em] transition-colors"
+                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                  >
+                    {label}
+                    <motion.span
+                      animate={{ rotate: dropdownOpen ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="w-3 h-3 opacity-60" />
+                    </motion.span>
+                  </button>
+
+                  <AnimatePresence>
+                    {dropdownOpen && (
+                      <ProductsDropdown onClose={() => setDropdownOpen(false)} />
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
+            const isRouter = href.startsWith("/");
+            return isRouter ? (
+              <Link
+                key={label}
+                to={href}
+                className="text-[11px] font-medium text-white/75 hover:text-white tracking-[0.18em] transition-colors"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                {label}
+              </Link>
+            ) : (
+              <a
+                key={label}
+                href={href}
+                className="text-[11px] font-medium text-white/75 hover:text-white tracking-[0.18em] transition-colors"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                {label}
+              </a>
+            );
+          })}
+        </nav>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav Drawer */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden border-t border-border overflow-hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="lg:hidden bg-[#0f2424] border-t border-white/10"
           >
-            <nav className="container py-6 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link}
-                  href="#"
-                  className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors"
-                >
-                  {link}
-                </a>
-              ))}
-              <a
-                href="tel:+918209815805"
-                className="flex items-center gap-2 text-base font-medium text-foreground/80 hover:text-foreground transition-colors mt-2"
-              >
-                <Phone className="w-4 h-4" />
-                +91 820 981 5805
-              </a>
+            <nav className="px-6 py-6 flex flex-col gap-0">
+              {navLinks.map((link) => {
+                if (link.hasDropdown) {
+                  // In mobile: show the category list inline
+                  return (
+                    <div key={link.label}>
+                      <Link
+                        to={link.href}
+                        onClick={() => setOpen(false)}
+                        className="text-sm font-medium text-white/80 hover:text-white transition-colors tracking-[0.15em] block py-3 border-b border-white/10"
+                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                      >
+                        {link.label}
+                      </Link>
+                      <div className="pl-4 py-2 space-y-0">
+                        {categories.map((cat) => (
+                          <Link
+                            key={cat.id}
+                            to={`/products/${cat.id}`}
+                            onClick={() => setOpen(false)}
+                            className="block py-2 text-[11px] text-white/50 hover:text-white tracking-[0.1em] underline underline-offset-2 decoration-white/20 hover:decoration-white transition-all border-b border-white/5"
+                            style={{ fontFamily: "'Montserrat', sans-serif" }}
+                          >
+                            {cat.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
+
+                const isRouter = link.href.startsWith("/");
+                return isRouter ? (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    onClick={() => setOpen(false)}
+                    className="text-sm font-medium text-white/80 hover:text-white transition-colors tracking-[0.15em] block py-3 border-b border-white/10"
+                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="text-sm font-medium text-white/80 hover:text-white transition-colors tracking-[0.15em] block py-3 border-b border-white/10"
+                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
             </nav>
           </motion.div>
         )}

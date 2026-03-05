@@ -1,49 +1,65 @@
 import { motion } from "framer-motion";
-import catDoorHandles from "@/assets/cat-door-handles.jpg";
-import catCabinetPulls from "@/assets/cat-cabinet-pulls.jpg";
-import catSlidingDoor from "@/assets/cat-sliding-door.jpg";
-import catBathroom from "@/assets/cat-bathroom.jpg";
+import catHandles from "@/assets/cat-handles.png";
+import catKnobs from "@/assets/cat-knobs.png";
+import catHooks from "@/assets/cat-hooks.png";
 
 const categories = [
-  { title: "Door Handles & Knobs", image: catDoorHandles },
-  { title: "Cabinet Knobs & Pulls", image: catCabinetPulls },
-  { title: "Sliding Door Kits", image: catSlidingDoor },
-  { title: "Bathroom Accessories", image: catBathroom },
+  { title: "Handles", image: catHandles },
+  { title: "Knobs", image: catKnobs },
+  { title: "Hooks", image: catHooks },
 ];
 
 export const CategoriesSection = () => (
-  <section className="py-20">
-    <div className="container">
-      <p className="text-center text-muted-foreground mb-12 flex items-center justify-center gap-2">
-        <span className="text-secondary text-xl">✓</span>
-        <span className="text-base tracking-wide">Trusted by thousands of happy customers across Rajasthan.</span>
+  <section id="collections" className="py-16 px-4 md:px-8 lg:px-16 bg-white">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="text-center mb-10"
+    >
+      <h2
+        className="text-3xl md:text-4xl font-bold text-foreground"
+        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+      >
+        Handles | Knobs | Hooks
+      </h2>
+      <p
+        className="text-2xl md:text-3xl font-bold text-foreground mt-1"
+        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+      >
+        Collections
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {categories.map((cat, i) => (
-          <motion.div
-            key={cat.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="group relative aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src={cat.image}
-              alt={cat.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
-            <span className="absolute top-4 right-4 bg-secondary text-secondary-foreground text-xs font-bold px-3 py-1 tracking-wider uppercase">
-              Popular
-            </span>
-            <h3 className="absolute bottom-6 left-6 font-display text-xl md:text-2xl font-bold text-primary-foreground leading-tight">
+    </motion.div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+      {categories.map((cat, i) => (
+        <motion.a
+          href="#"
+          key={cat.title}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.12, duration: 0.5 }}
+          className="group relative overflow-hidden aspect-[3/4] cursor-pointer block"
+        >
+          <img
+            src={cat.image}
+            alt={cat.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
+          <div className="absolute bottom-5 left-5">
+            <span
+              className="text-white text-lg font-bold underline-offset-4 group-hover:underline drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
               {cat.title}
-            </h3>
-          </motion.div>
-        ))}
-      </div>
+            </span>
+          </div>
+        </motion.a>
+      ))}
     </div>
   </section>
 );

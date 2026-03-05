@@ -1,37 +1,50 @@
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-hardware.jpg";
+import heroImage from "@/assets/hero-hardware-new.png";
 
 export const HeroSection = () => (
-  <section className="relative h-[85vh] min-h-[600px] overflow-hidden">
+  <section className="relative h-[88vh] min-h-[580px] overflow-hidden">
     <img
       src={heroImage}
-      alt="Premium door handles and cabinet hardware collection by Shree Jee Guru Hardware"
+      alt="Premium brass handles and knobs collection"
       className="absolute inset-0 w-full h-full object-cover"
       loading="eager"
     />
-    <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/40 to-transparent" />
-    <div className="relative container h-full flex items-center">
+    {/* Subtle gradient overlay - bottom heavy so product shines */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
+    {/* Left gradient for text readability */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
+
+    {/* Text overlay bottom-left like Mantara */}
+    <div className="absolute bottom-0 left-0 right-0 p-10 md:p-16">
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="max-w-xl"
+        transition={{ duration: 0.9, ease: "easeOut" }}
       >
-        <span className="inline-block px-5 py-2 bg-secondary text-secondary-foreground text-sm font-semibold tracking-widest uppercase mb-6">
-          Premium Collection
-        </span>
-        <h2 className="font-display text-5xl md:text-7xl font-bold text-primary-foreground leading-tight mb-4">
-          Make your space feel just right.
-        </h2>
-        <p className="text-lg text-primary-foreground/80 mb-8 font-light">
-          Discover premium door handles, cabinet pulls, and hardware accessories at Shree Jee Guru Hardware, Alwar.
-        </p>
-        <a
-          href="tel:+918209815805"
-          className="inline-block bg-secondary text-secondary-foreground px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-gold-dark transition-colors"
+        <h2
+          className="text-4xl md:text-6xl lg:text-7xl font-light text-white leading-tight"
+          style={{ fontFamily: "'Cormorant Garamond', serif" }}
         >
-          Contact Us
-        </a>
+          Details Make the
+          <br />
+          <em>Difference</em>
+        </h2>
+        <div className="mt-6 flex flex-col sm:flex-row gap-4">
+          <a
+            href="#collections"
+            className="inline-block bg-white text-[#1a3a3a] px-8 py-3.5 text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-[#1a3a3a] hover:text-white transition-colors"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            Shop Now
+          </a>
+          <a
+            href="tel:+918209815805"
+            className="inline-block border border-white text-white px-8 py-3.5 text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-white hover:text-[#1a3a3a] transition-colors"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            Contact Us
+          </a>
+        </div>
       </motion.div>
     </div>
   </section>

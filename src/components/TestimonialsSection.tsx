@@ -1,57 +1,91 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
-const reviews = [
-  { name: "Rajesh K.", text: "Excellent quality hardware! The brass handles I bought for my new home are absolutely stunning. Highly recommend Shree Jee Guru Hardware.", rating: 5 },
-  { name: "Priya S.", text: "Best hardware store in Alwar. Great variety and the staff is very helpful. Got all my bathroom accessories from here.", rating: 5 },
-  { name: "Vikram M.", text: "I've been buying from them for years. Consistent quality and fair prices. The sliding door kit I installed works perfectly.", rating: 5 },
-  { name: "Anita D.", text: "Premium products at reasonable prices. The cabinet knobs gave my kitchen a complete makeover. Thank you!", rating: 5 },
+const testimonials = [
+  {
+    rating: 5,
+    text: "Had a very good experience. Couldn't find such good handles and knobs anywhere in the city. Support was really good and they basically sorted everything out on a WhatsApp chat. Would purchase again!",
+    author: "Ramesh K.",
+  },
+  {
+    rating: 5,
+    text: "Absolutely love the quality! The brass handles we ordered for our new home look stunning. Fast delivery and excellent packaging. Highly recommend Shree Jee Hardware Hub.",
+    author: "Priya M.",
+  },
+  {
+    rating: 5,
+    text: "Great collection of premium hardware at very reasonable prices. The hooks and knobs are exactly as shown on the website. Will definitely order again!",
+    author: "Ankit S.",
+  },
+  {
+    rating: 4,
+    text: "Very happy with the purchase. The knobs are beautifully crafted and add a premium touch to our kitchen cabinets. Delivery was prompt.",
+    author: "Sunita G.",
+  },
 ];
 
+const Stars = ({ count }: { count: number }) => (
+  <div className="flex justify-center gap-1 mb-5">
+    {Array.from({ length: 5 }).map((_, i) => (
+      <span key={i} className={`text-xl ${i < count ? "text-[#C9A84C]" : "text-gray-200"}`}>
+        ★
+      </span>
+    ))}
+  </div>
+);
+
 export const TestimonialsSection = () => {
-  const [idx, setIdx] = useState(0);
-  const review = reviews[idx];
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const t = testimonials[current];
 
   return (
-    <section className="py-20 bg-muted">
-      <div className="container">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-center tracking-tight mb-14">
-          WHAT OUR CUSTOMERS SAY
+    <section className="py-20 bg-white text-center">
+      <div className="max-w-2xl mx-auto px-6">
+        <h2
+          className="text-3xl md:text-4xl font-light text-foreground mb-12"
+          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+        >
+          Google Testimonials
         </h2>
-        <div className="max-w-2xl mx-auto text-center">
+
+        <div className="min-h-[180px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
-              key={idx}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.3 }}
+              key={current}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.5 }}
+              className="text-center"
             >
-              <p className="text-muted-foreground text-sm mb-2">See what our customers have to say:</p>
-              <div className="flex justify-center gap-1 mb-4">
-                {[...Array(review.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />
-                ))}
-              </div>
-              <p className="font-semibold text-lg mb-3">{review.name}</p>
-              <p className="text-muted-foreground leading-relaxed text-base italic">"{review.text}"</p>
+              <Stars count={t.rating} />
+              <p className="text-gray-500 text-base leading-relaxed mb-4 italic">
+                "{t.text}"
+              </p>
+              <p className="text-sm font-medium text-gray-700">– {t.author}</p>
             </motion.div>
           </AnimatePresence>
-          <div className="flex justify-center gap-4 mt-10">
+        </div>
+
+        {/* Dots */}
+        <div className="flex justify-center gap-2 mt-8">
+          {testimonials.map((_, i) => (
             <button
-              onClick={() => setIdx((idx - 1 + reviews.length) % reviews.length)}
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => setIdx((idx + 1) % reviews.length)}
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${i === current ? "bg-[#1a3a3a] w-5" : "bg-gray-200"
+                }`}
+              aria-label={`Testimonial ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
