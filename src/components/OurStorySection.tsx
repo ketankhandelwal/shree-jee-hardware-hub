@@ -112,7 +112,7 @@ export const OurStorySection = () => (
                 </div>
                 <p
                   className="font-semibold text-gray-800 mb-1"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "15px" }}
+                  style={{ fontFamily: "'Roboto', sans-serif", fontSize: "15px" }}
                 >
                   {board.label}
                 </p>
@@ -133,7 +133,7 @@ export const OurStorySection = () => (
         >
           <h2
             className="text-4xl md:text-5xl font-light text-foreground mb-5 leading-tight"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            style={{ fontFamily: "'Roboto', sans-serif" }}
           >
             Inspiration Starts Here
           </h2>
@@ -144,7 +144,7 @@ export const OurStorySection = () => (
           </p>
           <button
             className="self-start bg-[#1a3a3a] text-white px-10 py-3.5 text-[11px] tracking-[0.2em] font-semibold hover:bg-[#122828] transition-colors"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            style={{ fontFamily: "'Roboto', sans-serif" }}
           >
             EXPLORE NOW
           </button>

@@ -20,17 +20,17 @@ const CategoryDetailPage = () => {
     // Dynamic per-category SEO
     useSEO({
         title: current
-            ? `${current.label} in Alwar | Buy ${current.label} Online — Shree Jee Hardware Hub`
-            : "Hardware Products | Shree Jee Hardware Hub Alwar",
+            ? `${current.label} in Alwar | Buy ${current.label} Online — Shree Ji Hardwares`
+            : "Hardware Products | Shree Ji Hardwares Alwar",
         description: current
-            ? `Buy premium ${current.label} in Alwar, Rajasthan at Shree Jee Hardware Hub. Best quality ${current.label} at unbeatable prices. Call +91 820 981 5805. Serving Alwar & surrounding areas.`
+            ? `Buy premium ${current.label} in Alwar, Rajasthan at Shree Ji Hardwares. Best quality ${current.label} at unbeatable prices. Call +91 820 981 5805. Serving Alwar & surrounding areas.`
             : "Premium hardware products in Alwar, Rajasthan.",
         canonical: `https://shreejihardwares.com/products/${categoryId}`,
         schema: current ? {
             "@context": "https://schema.org",
             "@type": "ItemList",
-            "name": `${current.label} — Shree Jee Hardware Hub`,
-            "description": `Premium ${current.label} available at Shree Jee Hardware Hub, Alwar, Rajasthan`,
+            "name": `${current.label} — Shree Ji Hardwares`,
+            "description": `Premium ${current.label} available at Shree Ji Hardwares, Alwar, Rajasthan`,
             "numberOfItems": products.length,
             "itemListElement": products.map((p, i) => ({
                 "@type": "ListItem",
@@ -45,7 +45,7 @@ const CategoryDetailPage = () => {
                         "price": p.price.replace(/[^0-9]/g, ""),
                         "priceCurrency": "INR",
                         "availability": "https://schema.org/InStock",
-                        "seller": { "@type": "Organization", "name": "Shree Jee Hardware Hub" }
+                        "seller": { "@type": "Organization", "name": "Shree Ji Hardwares" }
                     }
                 }
             }))
@@ -60,10 +60,10 @@ const CategoryDetailPage = () => {
     if (!current) {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-background">
-                <p className="text-2xl font-light text-gray-400" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <p className="text-2xl font-light text-gray-400" style={{ fontFamily: "'Roboto', sans-serif" }}>
                     Category not found
                 </p>
-                <Link to="/products" className="mt-6 text-[11px] tracking-widest text-[#1a3a3a] underline" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                <Link to="/products" className="mt-6 text-[11px] tracking-widest text-[#1a3a3a] underline" style={{ fontFamily: "'Roboto', sans-serif" }}>
                     ← BACK TO ALL CATEGORIES
                 </Link>
             </div>
@@ -77,7 +77,7 @@ const CategoryDetailPage = () => {
 
             {/* ── Page header ── */}
             <div className="bg-white border-b border-gray-100 px-4 md:px-12 lg:px-20 py-6">
-                <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs text-gray-400" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs text-gray-400" style={{ fontFamily: "'Roboto', sans-serif" }}>
                     <Link to="/" className="hover:text-[#1a3a3a] transition-colors tracking-wide">Home</Link>
                     <span>/</span>
                     <Link to="/products" className="hover:text-[#1a3a3a] transition-colors tracking-wide">Products</Link>
@@ -87,11 +87,11 @@ const CategoryDetailPage = () => {
                 <div className="max-w-7xl mx-auto mt-3 flex items-end justify-between">
                     <h1
                         className="text-3xl md:text-4xl font-light text-foreground"
-                        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                     >
                         {current.label}
                     </h1>
-                    <span className="text-xs text-gray-400 tracking-widest pb-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    <span className="text-xs text-gray-400 tracking-widest pb-1" style={{ fontFamily: "'Roboto', sans-serif" }}>
                         {products.length} PRODUCTS
                     </span>
                 </div>
@@ -120,9 +120,9 @@ const CategoryDetailPage = () => {
                             className="flex-shrink-0 flex flex-col items-center gap-2 group"
                         >
                             <div className="w-16 h-16 rounded-full bg-[#1a3a3a] flex items-center justify-center shadow-md group-hover:ring-2 group-hover:ring-[#c9a84c] transition-all">
-                                <span className="text-white text-[9px] tracking-widest font-semibold" style={{ fontFamily: "'Montserrat', sans-serif" }}>ALL</span>
+                                <span className="text-white text-[9px] tracking-widest font-semibold" style={{ fontFamily: "'Roboto', sans-serif" }}>ALL</span>
                             </div>
-                            <span className="text-[10px] text-gray-500 group-hover:text-[#1a3a3a] transition-colors text-center w-16 leading-tight" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                            <span className="text-[10px] text-gray-500 group-hover:text-[#1a3a3a] transition-colors text-center w-16 leading-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
                                 All
                             </span>
                         </Link>
@@ -132,7 +132,7 @@ const CategoryDetailPage = () => {
                             <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-[#c9a84c] ring-offset-2 shadow-md">
                                 <img src={current.image} alt={current.label} className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-[10px] text-[#1a3a3a] font-semibold text-center w-16 leading-tight" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                            <span className="text-[10px] text-[#1a3a3a] font-semibold text-center w-16 leading-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
                                 {current.label}
                             </span>
                         </div>
@@ -152,7 +152,7 @@ const CategoryDetailPage = () => {
                                         loading="lazy"
                                     />
                                 </div>
-                                <span className="text-[10px] text-gray-500 group-hover:text-[#1a3a3a] transition-colors text-center w-16 leading-tight" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                                <span className="text-[10px] text-gray-500 group-hover:text-[#1a3a3a] transition-colors text-center w-16 leading-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
                                     {cat.label}
                                 </span>
                             </Link>
@@ -197,7 +197,7 @@ const CategoryDetailPage = () => {
                                     </button>
                                     {/* Brand tag */}
                                     <div className="absolute top-3 left-3">
-                                        <span className="text-[8px] text-white/80 tracking-[0.2em] bg-[#1a3a3a]/70 backdrop-blur-sm px-2 py-0.5" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                                        <span className="text-[8px] text-white/80 tracking-[0.2em] bg-[#1a3a3a]/70 backdrop-blur-sm px-2 py-0.5" style={{ fontFamily: "'Roboto', sans-serif" }}>
                                             SHREE JEE
                                         </span>
                                     </div>
@@ -207,13 +207,13 @@ const CategoryDetailPage = () => {
                                 <div className="p-4">
                                     <p
                                         className="text-[12px] font-medium text-foreground/90 tracking-tight leading-snug mb-1"
-                                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                        style={{ fontFamily: "'Roboto', sans-serif" }}
                                     >
                                         {product.name}
                                     </p>
                                     <p
                                         className="text-sm font-bold text-[#1a3a3a]"
-                                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                        style={{ fontFamily: "'Roboto', sans-serif" }}
                                     >
                                         {product.price}
                                     </p>
@@ -224,7 +224,7 @@ const CategoryDetailPage = () => {
                                     <a
                                         href="tel:+918209815805"
                                         className="block w-full bg-[#1a3a3a] text-white text-center text-[10px] tracking-[0.2em] font-semibold py-2.5 hover:bg-[#122828] transition-colors"
-                                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                        style={{ fontFamily: "'Roboto', sans-serif" }}
                                     >
                                         ENQUIRE NOW
                                     </a>

@@ -17,13 +17,13 @@ export const CategoriesSection = () => (
     >
       <h2
         className="text-3xl md:text-4xl font-bold text-foreground"
-        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+        style={{ fontFamily: "'Roboto', sans-serif" }}
       >
         Handles | Knobs | Hooks
       </h2>
       <p
         className="text-2xl md:text-3xl font-bold text-foreground mt-1"
-        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+        style={{ fontFamily: "'Roboto', sans-serif" }}
       >
         Collections
       </p>
@@ -50,7 +50,7 @@ export const CategoriesSection = () => (
           <div className="absolute bottom-5 left-5">
             <span
               className="text-white text-lg font-bold underline-offset-4 group-hover:underline drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+              style={{ fontFamily: "'Roboto', sans-serif" }}
             >
               {cat.title}
             </span>

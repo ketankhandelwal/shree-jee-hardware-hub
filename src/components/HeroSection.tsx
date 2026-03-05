@@ -22,7 +22,7 @@ export const HeroSection = () => (
       >
         <h2
           className="text-4xl md:text-6xl lg:text-7xl font-light text-white leading-tight"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          style={{ fontFamily: "'Roboto', sans-serif" }}
         >
           Details Make the
           <br />
@@ -32,14 +32,14 @@ export const HeroSection = () => (
           <a
             href="#collections"
             className="inline-block bg-white text-[#1a3a3a] px-8 py-3.5 text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-[#1a3a3a] hover:text-white transition-colors"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            style={{ fontFamily: "'Roboto', sans-serif" }}
           >
             Shop Now
           </a>
           <a
             href="tel:+918209815805"
             className="inline-block border border-white text-white px-8 py-3.5 text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-white hover:text-[#1a3a3a] transition-colors"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            style={{ fontFamily: "'Roboto', sans-serif" }}
           >
             Contact Us
           </a>

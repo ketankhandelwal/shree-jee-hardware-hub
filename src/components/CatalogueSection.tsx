@@ -67,20 +67,20 @@ const PageSpread = () => (
                 <div className="w-8 h-px bg-[#c9a84c] mb-4" />
                 <p
                     className="text-[#c9a84c] tracking-[0.3em] text-[9px] mb-3"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                 >
                     SHREE JEE
                 </p>
                 <p
                     className="text-white text-lg font-light leading-tight"
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                 >
                     Hardware
                     <br />
                     Catalogue
                 </p>
                 <div className="w-8 h-px bg-[#c9a84c] mt-4" />
-                <p className="text-white/40 text-[8px] tracking-widest mt-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                <p className="text-white/40 text-[8px] tracking-widest mt-3" style={{ fontFamily: "'Roboto', sans-serif" }}>
                     2025 EDITION
                 </p>
             </div>
@@ -119,7 +119,7 @@ const PDFModal = ({ onClose }: { onClose: () => void }) => (
                     <FileText className="w-5 h-5 text-[#c9a84c]" />
                     <span
                         className="text-white text-sm tracking-widest"
-                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                     >
                         SHREE JEE CATALOGUE
                     </span>
@@ -129,7 +129,7 @@ const PDFModal = ({ onClose }: { onClose: () => void }) => (
                         href={CATALOGUE_URL}
                         download="Shree-Jee-Catalogue.pdf"
                         className="flex items-center gap-2 text-[#c9a84c] hover:text-white transition-colors text-xs tracking-widest"
-                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                     >
                         <Download className="w-4 h-4" />
                         DOWNLOAD
@@ -191,7 +191,7 @@ export const CatalogueSection = () => {
                                 <div className="w-8 h-px bg-[#c9a84c]" />
                                 <span
                                     className="text-[#c9a84c] text-[10px] tracking-[0.35em]"
-                                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                    style={{ fontFamily: "'Roboto', sans-serif" }}
                                 >
                                     OUR CATALOGUE
                                 </span>
@@ -200,7 +200,7 @@ export const CatalogueSection = () => {
                             {/* Heading */}
                             <h2
                                 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6"
-                                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                                style={{ fontFamily: "'Roboto', sans-serif" }}
                             >
                                 Explore Our
                                 <br />
@@ -212,7 +212,7 @@ export const CatalogueSection = () => {
                             {/* Body */}
                             <p
                                 className="text-white/50 leading-relaxed mb-10 text-base max-w-md"
-                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                style={{ fontFamily: "'Roboto', sans-serif" }}
                             >
                                 Browse through our full range of premium hardware — handles,
                                 knobs, hinges, hooks, and more. Download the PDF or flip through
@@ -225,7 +225,7 @@ export const CatalogueSection = () => {
                                     <span
                                         key={tag}
                                         className="px-4 py-1.5 border border-[#c9a84c]/30 text-[#c9a84c]/80 text-[10px] tracking-[0.2em]"
-                                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                        style={{ fontFamily: "'Roboto', sans-serif" }}
                                     >
                                         {tag}
                                     </span>
@@ -240,7 +240,7 @@ export const CatalogueSection = () => {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     className="group flex items-center justify-center gap-3 bg-[#c9a84c] text-[#0f2424] px-8 py-4 text-[11px] tracking-[0.2em] font-bold hover:bg-[#b8963e] transition-colors"
-                                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                    style={{ fontFamily: "'Roboto', sans-serif" }}
                                 >
                                     <BookOpen className="w-4 h-4" />
                                     VIEW ONLINE
@@ -254,7 +254,7 @@ export const CatalogueSection = () => {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     className="group flex items-center justify-center gap-3 border border-white/25 text-white px-8 py-4 text-[11px] tracking-[0.2em] font-semibold hover:border-white/60 hover:bg-white/5 transition-all"
-                                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                    style={{ fontFamily: "'Roboto', sans-serif" }}
                                 >
                                     <Download className="w-4 h-4" />
                                     DOWNLOAD PDF
@@ -282,13 +282,13 @@ export const CatalogueSection = () => {
                             >
                                 <p
                                     className="text-[10px] font-bold tracking-[0.2em]"
-                                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                    style={{ fontFamily: "'Roboto', sans-serif" }}
                                 >
                                     FREE DOWNLOAD
                                 </p>
                                 <p
                                     className="text-[9px] tracking-widest opacity-70 mt-0.5"
-                                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                    style={{ fontFamily: "'Roboto', sans-serif" }}
                                 >
                                     NO SIGNUP NEEDED
                                 </p>

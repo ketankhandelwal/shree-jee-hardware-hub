@@ -39,7 +39,7 @@ const ProductsDropdown = ({ onClose }: { onClose: () => void }) => (
         <div className="w-6 h-px bg-[#c9a84c]" />
         <span
           className="text-[#c9a84c] text-[9px] tracking-[0.4em]"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          style={{ fontFamily: "'Roboto', sans-serif" }}
         >
           ALL CATEGORIES
         </span>
@@ -58,7 +58,7 @@ const ProductsDropdown = ({ onClose }: { onClose: () => void }) => (
                 >
                   <span
                     className="text-[11.5px] text-white/60 group-hover:text-white tracking-[0.08em] underline underline-offset-[3px] decoration-white/20 group-hover:decoration-white transition-all duration-150"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                   >
                     {cat.label}
                   </span>
@@ -75,13 +75,13 @@ const ProductsDropdown = ({ onClose }: { onClose: () => void }) => (
           to="/products"
           onClick={onClose}
           className="text-[10px] tracking-[0.25em] text-[#c9a84c] hover:text-white transition-colors font-semibold"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          style={{ fontFamily: "'Roboto', sans-serif" }}
         >
           VIEW ALL COLLECTIONS →
         </Link>
         <span
           className="text-[9px] text-white/25 tracking-widest"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          style={{ fontFamily: "'Roboto', sans-serif" }}
         >
           {categories.length} CATEGORIES
         </span>
@@ -128,7 +128,7 @@ export const Navbar = () => {
           <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
             <img
               src={LOGO_URL}
-              alt="Shree Jee Hardware Hub"
+              alt="Shree Ji Hardwares"
               className="h-16 w-auto object-contain drop-shadow-sm"
             />
           </Link>
@@ -152,7 +152,7 @@ export const Navbar = () => {
                   <button
                     onClick={() => setDropdownOpen((v) => !v)}
                     className="flex items-center gap-1 text-[11px] font-medium text-white/75 hover:text-white tracking-[0.18em] transition-colors"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                   >
                     {label}
                     <motion.span
@@ -180,7 +180,7 @@ export const Navbar = () => {
                 key={label}
                 to={href}
                 className="text-[11px] font-medium text-white/75 hover:text-white tracking-[0.18em] transition-colors"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                style={{ fontFamily: "'Roboto', sans-serif" }}
               >
                 {label}
               </Link>
@@ -189,7 +189,7 @@ export const Navbar = () => {
                 key={label}
                 href={href}
                 className="text-[11px] font-medium text-white/75 hover:text-white tracking-[0.18em] transition-colors"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                style={{ fontFamily: "'Roboto', sans-serif" }}
               >
                 {label}
               </a>
@@ -217,7 +217,7 @@ export const Navbar = () => {
                         to={link.href}
                         onClick={() => setOpen(false)}
                         className="text-sm font-medium text-white/80 hover:text-white transition-colors tracking-[0.15em] block py-3 border-b border-white/10"
-                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                       >
                         {link.label}
                       </Link>
@@ -228,7 +228,7 @@ export const Navbar = () => {
                             to={`/products/${cat.id}`}
                             onClick={() => setOpen(false)}
                             className="block py-2 text-[11px] text-white/50 hover:text-white tracking-[0.1em] underline underline-offset-2 decoration-white/20 hover:decoration-white transition-all border-b border-white/5"
-                            style={{ fontFamily: "'Montserrat', sans-serif" }}
+                            style={{ fontFamily: "'Roboto', sans-serif" }}
                           >
                             {cat.label}
                           </Link>
@@ -245,7 +245,7 @@ export const Navbar = () => {
                     to={link.href}
                     onClick={() => setOpen(false)}
                     className="text-sm font-medium text-white/80 hover:text-white transition-colors tracking-[0.15em] block py-3 border-b border-white/10"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                   >
                     {link.label}
                   </Link>
@@ -255,7 +255,7 @@ export const Navbar = () => {
                     href={link.href}
                     onClick={() => setOpen(false)}
                     className="text-sm font-medium text-white/80 hover:text-white transition-colors tracking-[0.15em] block py-3 border-b border-white/10"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                   >
                     {link.label}
                   </a>

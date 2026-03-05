@@ -46,7 +46,7 @@ export const BestSellersSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-3xl md:text-4xl font-bold text-foreground mb-10"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          style={{ fontFamily: "'Roboto', sans-serif" }}
         >
           Featured Collection
         </motion.h2>
@@ -112,10 +112,10 @@ export const BestSellersSection = () => {
 
               {/* Product info */}
               <div className="pt-4 px-1">
-                <p className="text-[13px] font-medium text-foreground/90 uppercase tracking-tight" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                <p className="text-[13px] font-medium text-foreground/90 uppercase tracking-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
                   {product.name}
                 </p>
-                <p className="text-xs font-bold text-[#1a3a3a] mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                <p className="text-xs font-bold text-[#1a3a3a] mt-1" style={{ fontFamily: "'Roboto', sans-serif" }}>
                   {product.price || product.priceRange}
                 </p>
               </div>

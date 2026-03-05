@@ -18,8 +18,8 @@ const LotusIcon = () => (
 
 const ProductsPage = () => {
     useSEO({
-        title: "Hardware Products in Alwar | Cabinet Handles, Knobs, Hinges & More — Shree Jee Hardware Hub",
-        description: "Browse 16 categories of premium hardware in Alwar — cabinet handles, door handles, knobs, hinges, hooks, aldrops, tower bolts, kitchen accessories & more. Visit Shree Jee Hardware Hub, Alwar, Rajasthan.",
+        title: "Hardware Products in Alwar | Cabinet Handles, Knobs, Hinges & More — Shree Ji Hardwares",
+        description: "Browse 16 categories of premium hardware in Alwar — cabinet handles, door handles, knobs, hinges, hooks, aldrops, tower bolts, kitchen accessories & more. Visit Shree Ji Hardwares, Alwar, Rajasthan.",
         canonical: "https://shreejihardwares.com/products",
     });
     return (
@@ -49,7 +49,7 @@ const ProductsPage = () => {
                         <div className="w-10 h-px bg-[#c9a84c]/60" />
                         <span
                             className="text-[#c9a84c] text-[10px] tracking-[0.4em]"
-                            style={{ fontFamily: "'Montserrat', sans-serif" }}
+                            style={{ fontFamily: "'Roboto', sans-serif" }}
                         >
                             SHREE JEE HARDWARE
                         </span>
@@ -57,13 +57,13 @@ const ProductsPage = () => {
                     </div>
                     <h1
                         className="text-5xl md:text-6xl lg:text-7xl font-light text-white leading-tight mb-4"
-                        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                     >
                         Our <span className="italic text-[#c9a84c]">Collections</span>
                     </h1>
                     <p
                         className="text-white/40 text-sm tracking-wide max-w-sm"
-                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                     >
                         Explore premium hardware across {categories.length} categories
                     </p>
@@ -85,7 +85,7 @@ const ProductsPage = () => {
                         <div className="w-8 h-px bg-[#c9a84c]" />
                         <span
                             className="text-[10px] tracking-[0.35em] text-[#c9a84c]"
-                            style={{ fontFamily: "'Montserrat', sans-serif" }}
+                            style={{ fontFamily: "'Roboto', sans-serif" }}
                         >
                             BROWSE BY CATEGORY
                         </span>
@@ -120,7 +120,7 @@ const ProductsPage = () => {
                                     {/* Label */}
                                     <span
                                         className="text-center text-[11px] md:text-xs font-medium text-gray-700 group-hover:text-[#1a3a3a] tracking-wide leading-tight transition-colors duration-200"
-                                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                        style={{ fontFamily: "'Roboto', sans-serif" }}
                                     >
                                         {cat.label}
                                     </span>
@@ -141,20 +141,20 @@ const ProductsPage = () => {
                 >
                     <p
                         className="text-gray-400 text-xs tracking-[0.3em] mb-4"
-                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                     >
                         NOT SURE WHAT YOU NEED?
                     </p>
                     <h2
                         className="text-3xl md:text-4xl font-light text-foreground mb-6"
-                        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                     >
                         Book a Virtual Consultation
                     </h2>
                     <a
                         href="tel:+918209815805"
                         className="inline-block bg-[#1a3a3a] text-white px-12 py-3.5 text-[11px] tracking-[0.2em] font-semibold hover:bg-[#122828] transition-colors"
-                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                     >
                         CALL US NOW
                     </a>

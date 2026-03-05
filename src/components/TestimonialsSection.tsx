@@ -9,7 +9,7 @@ const testimonials = [
   },
   {
     rating: 5,
-    text: "Absolutely love the quality! The brass handles we ordered for our new home look stunning. Fast delivery and excellent packaging. Highly recommend Shree Jee Hardware Hub.",
+    text: "Absolutely love the quality! The brass handles we ordered for our new home look stunning. Fast delivery and excellent packaging. Highly recommend Shree Ji Hardwares.",
     author: "Priya M.",
   },
   {
@@ -50,8 +50,8 @@ export const TestimonialsSection = () => {
     <section className="py-20 bg-white text-center">
       <div className="max-w-2xl mx-auto px-6">
         <h2
-          className="text-3xl md:text-4xl font-light text-foreground mb-12"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          className="text-3xl md:text-4xl font-bold text-foreground mb-12"
+          style={{ fontFamily: "'Roboto', sans-serif" }}
         >
           Google Testimonials
         </h2>

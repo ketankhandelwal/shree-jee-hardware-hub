@@ -37,7 +37,7 @@ export const NavLink = () => {
       <div className="px-4 md:px-8 lg:px-16">
         <h2
           className="text-center text-xl md:text-2xl font-semibold tracking-[0.25em] text-foreground mb-10 uppercase"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          style={{ fontFamily: "'Roboto', sans-serif" }}
         >
           Shop Our Favourites
         </h2>
@@ -105,7 +105,7 @@ export const NavLink = () => {
                   <p className="text-sm font-medium text-gray-800">{product.name}</p>
                   <p className="text-xs text-gray-500 mt-1">{product.price}</p>
                   <button className="mt-3 bg-[#1a3a3a] text-white text-[10px] tracking-[0.18em] font-semibold px-4 py-2 w-fit hover:bg-[#122828] transition-colors"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    style={{ fontFamily: "'Roboto', sans-serif" }}>
                     ADD TO CART
                   </button>
                 </div>

@@ -122,7 +122,7 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
                             />
                             <span
                                 className="text-[#c9a84c] text-[9px] tracking-[0.55em]"
-                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                style={{ fontFamily: "'Roboto', sans-serif" }}
                             >
                                 EST. 2019
                             </span>
@@ -142,7 +142,7 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
                         >
                             <motion.img
                                 src={LOGO_URL}
-                                alt="Shree Jee Hardware Hub"
+                                alt="Shree Ji Hardwares"
                                 className="h-36 md:h-44 w-auto object-contain"
                                 animate={{ y: [0, -6, 0] }}
                                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
@@ -156,11 +156,11 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
                             transition={{ delay: 1.0, duration: 0.4 }}
                             className="overflow-hidden"
                         >
-                            {"SHREE JEE HARDWARE HUB".split("").map((ch, i) => (
+                            {"Shree Ji Hardwares".split("").map((ch, i) => (
                                 <motion.span
                                     key={i}
                                     className="inline-block text-white tracking-[0.35em] text-sm md:text-base font-light"
-                                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                    style={{ fontFamily: "'Roboto', sans-serif" }}
                                     initial={{ y: 28, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{
@@ -177,7 +177,7 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
                         {/* tagline */}
                         <motion.p
                             className="text-white/35 text-[10px] tracking-[0.3em] mt-1"
-                            style={{ fontFamily: "'Montserrat', sans-serif" }}
+                            style={{ fontFamily: "'Roboto', sans-serif" }}
                             initial={{ opacity: 0, y: 8 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 2.0 }}
@@ -200,7 +200,7 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
                     <motion.button
                         onClick={() => setExiting(true)}
                         className="absolute bottom-6 right-6 text-white/25 hover:text-white/60 text-[9px] tracking-[0.35em] transition-colors"
-                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.5 }}

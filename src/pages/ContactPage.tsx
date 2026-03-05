@@ -90,8 +90,8 @@ const LotusIcon = ({ size = 40 }: { size?: number }) => (
 // ─── Main Page ───
 const ContactPage = () => {
     useSEO({
-        title: "Contact Shree Jee Hardware Hub | Hardware Shop in Alwar, Rajasthan",
-        description: "Contact Shree Jee Hardware Hub in Alwar, Rajasthan. Call +91 820 981 5805, visit our showroom, or send us a message. India's finest hardware store serving Alwar and surrounding areas.",
+        title: "Contact Shree Ji Hardwares | Hardware Shop in Alwar, Rajasthan",
+        description: "Contact Shree Ji Hardwares in Alwar, Rajasthan. Call +91 820 981 5805, visit our showroom, or send us a message. India's finest hardware store serving Alwar and surrounding areas.",
         canonical: "https://shreejihardwares.com/contact",
     });
     const [formState, setFormState] = useState({
@@ -156,7 +156,7 @@ const ContactPage = () => {
                         <div className="w-10 h-px bg-[#c9a84c]/60" />
                         <span
                             className="text-[#c9a84c] text-[10px] tracking-[0.4em]"
-                            style={{ fontFamily: "'Montserrat', sans-serif" }}
+                            style={{ fontFamily: "'Roboto', sans-serif" }}
                         >
                             GET IN TOUCH
                         </span>
@@ -164,13 +164,13 @@ const ContactPage = () => {
                     </div>
                     <h1
                         className="text-5xl md:text-6xl lg:text-7xl font-light text-white leading-tight mb-5"
-                        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                     >
                         Contact <span className="italic text-[#c9a84c]">Us</span>
                     </h1>
                     <p
                         className="text-white/45 text-sm tracking-wide max-w-md"
-                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                        style={{ fontFamily: "'Roboto', sans-serif" }}
                     >
                         We'd love to hear from you. Send us a message and we'll get back to
                         you as soon as possible.
@@ -195,7 +195,7 @@ const ContactPage = () => {
                             </div>
                             <h3
                                 className="text-lg font-semibold text-foreground mb-3"
-                                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                                style={{ fontFamily: "'Roboto', sans-serif" }}
                             >
                                 {title}
                             </h3>
@@ -204,7 +204,7 @@ const ContactPage = () => {
                                     <p
                                         key={line}
                                         className="text-sm text-gray-500"
-                                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                        style={{ fontFamily: "'Roboto', sans-serif" }}
                                     >
                                         {line}
                                     </p>
@@ -216,7 +216,7 @@ const ContactPage = () => {
                                     target={link.startsWith("http") ? "_blank" : undefined}
                                     rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
                                     className="text-[10px] tracking-[0.2em] font-semibold text-[#1a3a3a] hover:text-[#c9a84c] transition-colors"
-                                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                    style={{ fontFamily: "'Roboto', sans-serif" }}
                                 >
                                     {linkLabel} →
                                 </a>
@@ -241,14 +241,14 @@ const ContactPage = () => {
                             <div className="w-8 h-px bg-[#c9a84c]" />
                             <span
                                 className="text-[10px] tracking-[0.35em] text-[#c9a84c]"
-                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                style={{ fontFamily: "'Roboto', sans-serif" }}
                             >
                                 SEND A MESSAGE
                             </span>
                         </div>
                         <h2
                             className="text-4xl font-light text-foreground mb-8"
-                            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                            style={{ fontFamily: "'Roboto', sans-serif" }}
                         >
                             Write to Us
                         </h2>
@@ -265,20 +265,20 @@ const ContactPage = () => {
                                     <CheckCircle2 className="w-12 h-12 text-[#1a3a3a] mb-5" />
                                     <h3
                                         className="text-2xl font-semibold text-foreground mb-2"
-                                        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                                        style={{ fontFamily: "'Roboto', sans-serif" }}
                                     >
                                         Message Sent!
                                     </h3>
                                     <p
                                         className="text-sm text-gray-500 max-w-xs"
-                                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                        style={{ fontFamily: "'Roboto', sans-serif" }}
                                     >
                                         Thank you for reaching out. We'll get back to you within 24 hours.
                                     </p>
                                     <button
                                         onClick={() => setStatus("idle")}
                                         className="mt-8 text-[11px] tracking-[0.2em] font-semibold text-[#1a3a3a] hover:text-[#c9a84c] transition-colors"
-                                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                        style={{ fontFamily: "'Roboto', sans-serif" }}
                                     >
                                         SEND ANOTHER →
                                     </button>
@@ -298,7 +298,7 @@ const ContactPage = () => {
                                             <label
                                                 htmlFor="name"
                                                 className="text-[10px] tracking-[0.25em] text-gray-500"
-                                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                                style={{ fontFamily: "'Roboto', sans-serif" }}
                                             >
                                                 FULL NAME *
                                             </label>
@@ -311,14 +311,14 @@ const ContactPage = () => {
                                                 onChange={handleChange}
                                                 placeholder="Rahul Sharma"
                                                 className="border border-gray-200 bg-white px-4 py-3 text-sm text-foreground placeholder:text-gray-300 focus:outline-none focus:border-[#1a3a3a] transition-colors"
-                                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                                style={{ fontFamily: "'Roboto', sans-serif" }}
                                             />
                                         </div>
                                         <div className="flex flex-col gap-1.5">
                                             <label
                                                 htmlFor="email"
                                                 className="text-[10px] tracking-[0.25em] text-gray-500"
-                                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                                style={{ fontFamily: "'Roboto', sans-serif" }}
                                             >
                                                 EMAIL ADDRESS *
                                             </label>
@@ -331,7 +331,7 @@ const ContactPage = () => {
                                                 onChange={handleChange}
                                                 placeholder="you@example.com"
                                                 className="border border-gray-200 bg-white px-4 py-3 text-sm text-foreground placeholder:text-gray-300 focus:outline-none focus:border-[#1a3a3a] transition-colors"
-                                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                                style={{ fontFamily: "'Roboto', sans-serif" }}
                                             />
                                         </div>
                                     </div>
@@ -342,7 +342,7 @@ const ContactPage = () => {
                                             <label
                                                 htmlFor="phone"
                                                 className="text-[10px] tracking-[0.25em] text-gray-500"
-                                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                                style={{ fontFamily: "'Roboto', sans-serif" }}
                                             >
                                                 PHONE NUMBER
                                             </label>
@@ -354,14 +354,14 @@ const ContactPage = () => {
                                                 onChange={handleChange}
                                                 placeholder="+91 98765 43210"
                                                 className="border border-gray-200 bg-white px-4 py-3 text-sm text-foreground placeholder:text-gray-300 focus:outline-none focus:border-[#1a3a3a] transition-colors"
-                                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                                style={{ fontFamily: "'Roboto', sans-serif" }}
                                             />
                                         </div>
                                         <div className="flex flex-col gap-1.5">
                                             <label
                                                 htmlFor="subject"
                                                 className="text-[10px] tracking-[0.25em] text-gray-500"
-                                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                                style={{ fontFamily: "'Roboto', sans-serif" }}
                                             >
                                                 SUBJECT *
                                             </label>
@@ -372,7 +372,7 @@ const ContactPage = () => {
                                                 value={formState.subject}
                                                 onChange={handleChange}
                                                 className="border border-gray-200 bg-white px-4 py-3 text-sm text-foreground focus:outline-none focus:border-[#1a3a3a] transition-colors appearance-none"
-                                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                                style={{ fontFamily: "'Roboto', sans-serif" }}
                                             >
                                                 <option value="" disabled>
                                                     Select a topic
@@ -391,7 +391,7 @@ const ContactPage = () => {
                                         <label
                                             htmlFor="message"
                                             className="text-[10px] tracking-[0.25em] text-gray-500"
-                                            style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                            style={{ fontFamily: "'Roboto', sans-serif" }}
                                         >
                                             YOUR MESSAGE *
                                         </label>
@@ -404,7 +404,7 @@ const ContactPage = () => {
                                             onChange={handleChange}
                                             placeholder="Tell us how we can help..."
                                             className="border border-gray-200 bg-white px-4 py-3 text-sm text-foreground placeholder:text-gray-300 focus:outline-none focus:border-[#1a3a3a] transition-colors resize-none"
-                                            style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                            style={{ fontFamily: "'Roboto', sans-serif" }}
                                         />
                                     </div>
 
@@ -412,7 +412,7 @@ const ContactPage = () => {
                                     {status === "error" && (
                                         <div className="flex items-center gap-2 text-red-600 text-sm">
                                             <AlertCircle className="w-4 h-4" />
-                                            <span style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                                            <span style={{ fontFamily: "'Roboto', sans-serif" }}>
                                                 Something went wrong. Please try again.
                                             </span>
                                         </div>
@@ -425,7 +425,7 @@ const ContactPage = () => {
                                         whileHover={{ scale: 1.01 }}
                                         whileTap={{ scale: 0.99 }}
                                         className="w-full flex items-center justify-center gap-3 bg-[#1a3a3a] text-white py-4 text-[11px] tracking-[0.25em] font-semibold hover:bg-[#122828] disabled:opacity-60 transition-colors"
-                                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                        style={{ fontFamily: "'Roboto', sans-serif" }}
                                     >
                                         {status === "loading" ? (
                                             <>
@@ -456,14 +456,14 @@ const ContactPage = () => {
                             <div className="w-8 h-px bg-[#c9a84c]" />
                             <span
                                 className="text-[10px] tracking-[0.35em] text-[#c9a84c]"
-                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                style={{ fontFamily: "'Roboto', sans-serif" }}
                             >
                                 FIND US
                             </span>
                         </div>
                         <h2
                             className="text-4xl font-light text-foreground -mt-2"
-                            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                            style={{ fontFamily: "'Roboto', sans-serif" }}
                         >
                             Our Showroom
                         </h2>
@@ -487,7 +487,7 @@ const ContactPage = () => {
                         <div className="bg-[#1a3a3a] p-7 flex flex-col gap-4">
                             <p
                                 className="text-white/40 text-[10px] tracking-[0.3em]"
-                                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                style={{ fontFamily: "'Roboto', sans-serif" }}
                             >
                                 QUICK CONTACT
                             </p>
@@ -498,7 +498,7 @@ const ContactPage = () => {
                                 <Phone className="w-4 h-4 text-[#c9a84c] shrink-0" />
                                 <span
                                     className="text-sm"
-                                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                    style={{ fontFamily: "'Roboto', sans-serif" }}
                                 >
                                     +91 820 981 5805
                                 </span>
@@ -512,7 +512,7 @@ const ContactPage = () => {
                                 <Instagram className="w-4 h-4 text-[#c9a84c] shrink-0" />
                                 <span
                                     className="text-sm"
-                                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                    style={{ fontFamily: "'Roboto', sans-serif" }}
                                 >
                                     @shreeji_hardware_
                                 </span>
@@ -524,7 +524,7 @@ const ContactPage = () => {
                                 <Mail className="w-4 h-4 text-[#c9a84c] shrink-0" />
                                 <span
                                     className="text-sm"
-                                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                                    style={{ fontFamily: "'Roboto', sans-serif" }}
                                 >
                                     shreeji.hardware@email.com
                                 </span>

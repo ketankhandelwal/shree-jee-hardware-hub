@@ -45,7 +45,7 @@ export const GuaranteeSection = () => {
       <div className="px-4 md:px-8 lg:px-16">
         <h2
           className="text-2xl md:text-3xl font-semibold text-foreground mb-8"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          style={{ fontFamily: "'Roboto', sans-serif" }}
         >
           Top Sellers
         </h2>
@@ -92,13 +92,13 @@ export const GuaranteeSection = () => {
                 <div className="pt-3">
                   <p
                     className="text-sm text-gray-800"
-                    style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "12px" }}
+                    style={{ fontFamily: "'Roboto', sans-serif", fontSize: "12px" }}
                   >
                     {product.name}
                   </p>
                   <p
                     className="text-sm text-gray-500 mt-1"
-                    style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "12px" }}
+                    style={{ fontFamily: "'Roboto', sans-serif", fontSize: "12px" }}
                   >
                     {product.price}
                   </p>

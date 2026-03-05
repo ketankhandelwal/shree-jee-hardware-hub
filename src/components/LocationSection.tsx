@@ -28,13 +28,13 @@ export const LocationSection = () => (
                     >
                         <p
                             className="text-5xl md:text-6xl font-light text-foreground"
-                            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                            style={{ fontFamily: "'Roboto', sans-serif" }}
                         >
                             {stat.value}
                         </p>
                         <p
                             className="text-xs tracking-[0.25em] text-gray-500 mt-2 whitespace-pre-line"
-                            style={{ fontFamily: "'Montserrat', sans-serif" }}
+                            style={{ fontFamily: "'Roboto', sans-serif" }}
                         >
                             {stat.label}
                         </p>
@@ -54,7 +54,7 @@ export const LocationSection = () => (
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Shree Jee Hardware Hub Location"
+                title="Shree Ji Hardwares Location"
                 className="absolute inset-0 w-full h-full"
             />
 
@@ -68,7 +68,7 @@ export const LocationSection = () => (
             >
                 <h3
                     className="text-xl md:text-2xl font-semibold text-foreground mb-3"
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                 >
                     Our Location
                 </h3>
@@ -88,7 +88,7 @@ export const LocationSection = () => (
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full bg-[#1a3a3a] text-white text-center text-[11px] tracking-[0.2em] font-semibold py-3 hover:bg-[#122828] transition-colors"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                 >
                     GET DIRECTIONS
                 </a>

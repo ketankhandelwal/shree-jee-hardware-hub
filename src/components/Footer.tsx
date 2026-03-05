@@ -8,11 +8,11 @@ export const Footer = () => (
         <div className="md:col-span-1">
           <h3
             className="text-2xl font-light tracking-[0.2em] mb-3 text-white"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            style={{ fontFamily: "'Roboto', sans-serif" }}
           >
             SHREE JEE
           </h3>
-          <p className="text-xs text-white/50 tracking-[0.15em] mb-6" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <p className="text-xs text-white/50 tracking-[0.15em] mb-6" style={{ fontFamily: "'Roboto', sans-serif" }}>
             HARDWARE HUB
           </p>
           <p className="text-sm text-white/60 leading-relaxed">
@@ -24,7 +24,7 @@ export const Footer = () => (
         <div>
           <h4
             className="text-xs font-semibold tracking-[0.2em] uppercase mb-6 text-white/80"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            style={{ fontFamily: "'Roboto', sans-serif" }}
           >
             Quick Links
           </h4>
@@ -46,7 +46,7 @@ export const Footer = () => (
         <div>
           <h4
             className="text-xs font-semibold tracking-[0.2em] uppercase mb-6 text-white/80"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            style={{ fontFamily: "'Roboto', sans-serif" }}
           >
             Customer Service
           </h4>
@@ -65,7 +65,7 @@ export const Footer = () => (
         <div>
           <h4
             className="text-xs font-semibold tracking-[0.2em] uppercase mb-6 text-white/80"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            style={{ fontFamily: "'Roboto', sans-serif" }}
           >
             Contact Us
           </h4>
@@ -120,14 +120,14 @@ export const Footer = () => (
     {/* Bottom bar */}
     <div className="border-t border-white/10">
       <div className="px-4 md:px-8 lg:px-16 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-        <p className="text-xs text-white/35" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-          © 2026 Shree Jee Hardware Hub. All rights reserved.
+        <p className="text-xs text-white/35" style={{ fontFamily: "'Roboto', sans-serif" }}>
+          © 2026 Shree Ji Hardwares. All rights reserved.
         </p>
         <div className="flex items-center gap-6">
-          <a href="#" className="text-xs text-white/35 hover:text-white/70 transition-colors" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <a href="#" className="text-xs text-white/35 hover:text-white/70 transition-colors" style={{ fontFamily: "'Roboto', sans-serif" }}>
             Privacy Policy
           </a>
-          <a href="#" className="text-xs text-white/35 hover:text-white/70 transition-colors" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <a href="#" className="text-xs text-white/35 hover:text-white/70 transition-colors" style={{ fontFamily: "'Roboto', sans-serif" }}>
             Terms
           </a>
         </div>

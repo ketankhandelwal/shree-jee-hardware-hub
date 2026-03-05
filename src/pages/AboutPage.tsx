@@ -19,7 +19,7 @@ const timeline = [
     {
         year: "2019",
         title: "The Beginning",
-        description: "Shree Jee Hardware Hub was founded in Alwar, Rajasthan with a small shop and a big dream — to bring premium quality hardware to every home.",
+        description: "Shree Ji Hardwares was founded in Alwar, Rajasthan with a small shop and a big dream — to bring premium quality hardware to every home.",
         image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.42.jpeg",
         side: "right",
     },
@@ -54,7 +54,7 @@ const timeline = [
     {
         year: "2025",
         title: "7000+ Homes & Beyond",
-        description: "Today, Shree Jee Hardware Hub stands as one of Alwar's most trusted hardware destinations — with 7,000+ homes serviced and many more to come.",
+        description: "Today, Shree Ji Hardwares stands as one of Alwar's most trusted hardware destinations — with 7,000+ homes serviced and many more to come.",
         image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/knobs/WhatsApp+Image+2026-03-01+at+15.42.48+(2).jpeg",
         side: "left",
     },
@@ -107,10 +107,10 @@ const StatCard = ({ icon: Icon, value, suffix, label }: typeof stats[0]) => {
             <div className="w-14 h-14 rounded-full bg-[#c9a84c]/10 flex items-center justify-center mb-4 border border-[#c9a84c]/30">
                 <Icon className="w-6 h-6 text-[#c9a84c]" />
             </div>
-            <p className="text-5xl md:text-6xl font-light text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <p className="text-5xl md:text-6xl font-light text-white mb-2" style={{ fontFamily: "'Roboto', sans-serif" }}>
                 {count}{suffix}
             </p>
-            <p className="text-[10px] tracking-[0.3em] text-white/45" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <p className="text-[10px] tracking-[0.3em] text-white/45" style={{ fontFamily: "'Roboto', sans-serif" }}>
                 {label.toUpperCase()}
             </p>
         </motion.div>
@@ -143,15 +143,15 @@ const ParallaxHero = () => {
                 >
                     <div className="flex items-center justify-center gap-3 mb-6">
                         <div className="w-12 h-px bg-[#c9a84c]/70" />
-                        <span className="text-[#c9a84c] text-[10px] tracking-[0.45em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                        <span className="text-[#c9a84c] text-[10px] tracking-[0.45em]" style={{ fontFamily: "'Roboto', sans-serif" }}>
                             SINCE 2019
                         </span>
                         <div className="w-12 h-px bg-[#c9a84c]/70" />
                     </div>
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] mb-6" style={{ fontFamily: "'Roboto', sans-serif" }}>
                         Our Story
                     </h1>
-                    <p className="text-white/50 text-sm md:text-base max-w-xl mx-auto leading-relaxed" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    <p className="text-white/50 text-sm md:text-base max-w-xl mx-auto leading-relaxed" style={{ fontFamily: "'Roboto', sans-serif" }}>
                         A family-run hardware store born in Alwar, built on trust,<br className="hidden md:block" /> quality, and a passion for beautiful homes.
                     </p>
                 </motion.div>
@@ -163,7 +163,7 @@ const ParallaxHero = () => {
                     transition={{ delay: 1.4 }}
                     className="absolute bottom-10 flex flex-col items-center gap-2"
                 >
-                    <span className="text-white/30 text-[9px] tracking-[0.4em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>SCROLL</span>
+                    <span className="text-white/30 text-[9px] tracking-[0.4em]" style={{ fontFamily: "'Roboto', sans-serif" }}>SCROLL</span>
                     <motion.div
                         animate={{ y: [0, 8, 0] }}
                         transition={{ repeat: Infinity, duration: 1.5 }}
@@ -214,7 +214,7 @@ const TimelineItem = ({ item, index }: { item: typeof timeline[0]; index: number
                     transition={{ type: "spring", stiffness: 300, delay: index * 0.08 }}
                     className="w-10 h-10 rounded-full bg-[#1a3a3a] border-4 border-[#c9a84c] flex items-center justify-center z-10 shadow-lg"
                 >
-                    <span className="text-[#c9a84c] text-[9px] font-bold" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    <span className="text-[#c9a84c] text-[9px] font-bold" style={{ fontFamily: "'Roboto', sans-serif" }}>
                         {item.year.slice(2)}
                     </span>
                 </motion.div>
@@ -256,14 +256,14 @@ const TimelineItem = ({ item, index }: { item: typeof timeline[0]; index: number
                 >
                     <div className="flex flex-col items-center">
                         <div className="w-8 h-8 rounded-full bg-[#1a3a3a] border-2 border-[#c9a84c] flex items-center justify-center shrink-0">
-                            <span className="text-[#c9a84c] text-[8px] font-bold" style={{ fontFamily: "'Montserrat', sans-serif" }}>{item.year.slice(2)}</span>
+                            <span className="text-[#c9a84c] text-[8px] font-bold" style={{ fontFamily: "'Roboto', sans-serif" }}>{item.year.slice(2)}</span>
                         </div>
                         <div className="w-px flex-1 bg-[#c9a84c]/20 mt-2" />
                     </div>
                     <div className="pb-8">
-                        <span className="text-[#c9a84c] text-[9px] tracking-widest" style={{ fontFamily: "'Montserrat', sans-serif" }}>{item.year}</span>
-                        <h3 className="text-xl font-semibold text-foreground my-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{item.title}</h3>
-                        <p className="text-gray-500 text-sm leading-relaxed mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>{item.description}</p>
+                        <span className="text-[#c9a84c] text-[9px] tracking-widest" style={{ fontFamily: "'Roboto', sans-serif" }}>{item.year}</span>
+                        <h3 className="text-xl font-semibold text-foreground my-1" style={{ fontFamily: "'Roboto', sans-serif" }}>{item.title}</h3>
+                        <p className="text-gray-500 text-sm leading-relaxed mb-3" style={{ fontFamily: "'Roboto', sans-serif" }}>{item.description}</p>
                         <TimelineImg item={item} />
                     </div>
                 </motion.div>
@@ -274,9 +274,9 @@ const TimelineItem = ({ item, index }: { item: typeof timeline[0]; index: number
 
 const TimelineText = ({ item }: { item: typeof timeline[0] }) => (
     <div>
-        <span className="text-[#c9a84c] text-[9px] tracking-[0.35em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>{item.year}</span>
-        <h3 className="text-2xl md:text-3xl font-semibold text-foreground mt-1 mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{item.title}</h3>
-        <p className="text-gray-500 text-sm leading-relaxed" style={{ fontFamily: "'Montserrat', sans-serif" }}>{item.description}</p>
+        <span className="text-[#c9a84c] text-[9px] tracking-[0.35em]" style={{ fontFamily: "'Roboto', sans-serif" }}>{item.year}</span>
+        <h3 className="text-2xl md:text-3xl font-semibold text-foreground mt-1 mb-3" style={{ fontFamily: "'Roboto', sans-serif" }}>{item.title}</h3>
+        <p className="text-gray-500 text-sm leading-relaxed" style={{ fontFamily: "'Roboto', sans-serif" }}>{item.description}</p>
     </div>
 );
 
@@ -294,8 +294,8 @@ const TimelineImg = ({ item }: { item: typeof timeline[0] }) => (
 /* ─── MAIN PAGE ───────────────────── */
 const AboutPage = () => {
     useSEO({
-        title: "About Shree Jee Hardware Hub | Best Hardware Store in Alwar Since 2019",
-        description: "Learn about Shree Jee Hardware Hub — Alwar's trusted hardware store since 2019. We've served 7000+ homes across Rajasthan with premium handles, hinges, knobs and more. Visit us in Alwar.",
+        title: "About Shree Ji Hardwares | Best Hardware Store in Alwar Since 2019",
+        description: "Learn about Shree Ji Hardwares — Alwar's trusted hardware store since 2019. We've served 7000+ homes across Rajasthan with premium handles, hinges, knobs and more. Visit us in Alwar.",
         canonical: "https://shreejihardwares.com/about",
     });
     return (
@@ -317,25 +317,25 @@ const AboutPage = () => {
                     >
                         <div className="flex items-center gap-3 mb-5">
                             <div className="w-8 h-px bg-[#c9a84c]" />
-                            <span className="text-[#c9a84c] text-[10px] tracking-[0.4em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>WHO WE ARE</span>
+                            <span className="text-[#c9a84c] text-[10px] tracking-[0.4em]" style={{ fontFamily: "'Roboto', sans-serif" }}>WHO WE ARE</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-light text-foreground leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <h2 className="text-4xl md:text-5xl font-light text-foreground leading-tight mb-6" style={{ fontFamily: "'Roboto', sans-serif" }}>
                             More than a hardware store —<br />
                             <span className="italic text-[#c9a84c]">a home companion.</span>
                         </h2>
-                        <p className="text-gray-500 leading-relaxed text-sm mb-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                            At Shree Jee Hardware Hub, we believe that the smallest details make the biggest difference. A beautifully chosen handle, a perfectly finished knob — these are the things that transform a house into a home.
+                        <p className="text-gray-500 leading-relaxed text-sm mb-4" style={{ fontFamily: "'Roboto', sans-serif" }}>
+                            At Shree Ji Hardwares, we believe that the smallest details make the biggest difference. A beautifully chosen handle, a perfectly finished knob — these are the things that transform a house into a home.
                         </p>
-                        <p className="text-gray-500 leading-relaxed text-sm" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                        <p className="text-gray-500 leading-relaxed text-sm" style={{ fontFamily: "'Roboto', sans-serif" }}>
                             Based in Alwar, Rajasthan, we've spent over a decade curating the finest hardware — blending craftsmanship, aesthetics, and affordability for homeowners, builders, and interior designers across India.
                         </p>
 
                         <div className="flex items-center gap-3 mt-8">
                             <MapPin className="w-4 h-4 text-[#c9a84c] shrink-0" />
-                            <span className="text-sm text-gray-600" style={{ fontFamily: "'Montserrat', sans-serif" }}>Alwar, Rajasthan, India</span>
+                            <span className="text-sm text-gray-600" style={{ fontFamily: "'Roboto', sans-serif" }}>Alwar, Rajasthan, India</span>
                             <span className="text-gray-300">|</span>
                             <Phone className="w-4 h-4 text-[#c9a84c] shrink-0" />
-                            <a href="tel:+918209815805" className="text-sm text-gray-600 hover:text-[#1a3a3a] transition-colors" style={{ fontFamily: "'Montserrat', sans-serif" }}>+91 820 981 5805</a>
+                            <a href="tel:+918209815805" className="text-sm text-gray-600 hover:text-[#1a3a3a] transition-colors" style={{ fontFamily: "'Roboto', sans-serif" }}>+91 820 981 5805</a>
                         </div>
                     </motion.div>
 
@@ -366,8 +366,8 @@ const AboutPage = () => {
                             />
                             {/* Gold accent box */}
                             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-[#1a3a3a] px-6 py-4 text-center shadow-xl z-10">
-                                <p className="text-[#c9a84c] text-2xl font-light" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Est. 2019</p>
-                                <p className="text-white/50 text-[9px] tracking-widest mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>ALWAR, RAJASTHAN</p>
+                                <p className="text-[#c9a84c] text-2xl font-light" style={{ fontFamily: "'Roboto', sans-serif" }}>Est. 2019</p>
+                                <p className="text-white/50 text-[9px] tracking-widest mt-1" style={{ fontFamily: "'Roboto', sans-serif" }}>ALWAR, RAJASTHAN</p>
                             </div>
                         </div>
                     </motion.div>
@@ -396,10 +396,10 @@ const AboutPage = () => {
                     >
                         <div className="flex items-center justify-center gap-3 mb-4">
                             <div className="w-8 h-px bg-[#c9a84c]" />
-                            <span className="text-[#c9a84c] text-[10px] tracking-[0.4em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>OUR JOURNEY</span>
+                            <span className="text-[#c9a84c] text-[10px] tracking-[0.4em]" style={{ fontFamily: "'Roboto', sans-serif" }}>OUR JOURNEY</span>
                             <div className="w-8 h-px bg-[#c9a84c]" />
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-light text-foreground" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <h2 className="text-4xl md:text-5xl font-light text-foreground" style={{ fontFamily: "'Roboto', sans-serif" }}>
                             A Decade of <span className="italic text-[#c9a84c]">Excellence</span>
                         </h2>
                     </motion.div>
@@ -428,9 +428,9 @@ const AboutPage = () => {
                     >
                         <div className="flex items-center gap-3 mb-4">
                             <div className="w-8 h-px bg-[#c9a84c]" />
-                            <span className="text-[#c9a84c] text-[10px] tracking-[0.4em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>WHAT DRIVES US</span>
+                            <span className="text-[#c9a84c] text-[10px] tracking-[0.4em]" style={{ fontFamily: "'Roboto', sans-serif" }}>WHAT DRIVES US</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-light text-foreground" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Our Values</h2>
+                        <h2 className="text-4xl md:text-5xl font-light text-foreground" style={{ fontFamily: "'Roboto', sans-serif" }}>Our Values</h2>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 gap-6">
@@ -444,10 +444,10 @@ const AboutPage = () => {
                                 className="group bg-white border border-gray-100 p-8 hover:border-[#1a3a3a]/25 hover:shadow-md transition-all duration-300"
                             >
                                 <div className="w-8 h-px bg-[#c9a84c] mb-5 group-hover:w-14 transition-all duration-400" />
-                                <h3 className="text-2xl font-semibold text-foreground mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                                <h3 className="text-2xl font-semibold text-foreground mb-3" style={{ fontFamily: "'Roboto', sans-serif" }}>
                                     {v.title}
                                 </h3>
-                                <p className="text-gray-500 text-sm leading-relaxed" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                                <p className="text-gray-500 text-sm leading-relaxed" style={{ fontFamily: "'Roboto', sans-serif" }}>
                                     {v.body}
                                 </p>
                             </motion.div>
@@ -466,20 +466,20 @@ const AboutPage = () => {
                     viewport={{ once: true }}
                     className="relative z-10 max-w-2xl mx-auto text-center px-4"
                 >
-                    <p className="text-[#c9a84c] text-[10px] tracking-[0.4em] mb-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    <p className="text-[#c9a84c] text-[10px] tracking-[0.4em] mb-4" style={{ fontFamily: "'Roboto', sans-serif" }}>
                         LET'S BUILD SOMETHING BEAUTIFUL
                     </p>
-                    <h2 className="text-4xl md:text-5xl font-light text-white mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <h2 className="text-4xl md:text-5xl font-light text-white mb-6" style={{ fontFamily: "'Roboto', sans-serif" }}>
                         Ready to transform your space?
                     </h2>
-                    <p className="text-white/40 text-sm leading-relaxed mb-10" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    <p className="text-white/40 text-sm leading-relaxed mb-10" style={{ fontFamily: "'Roboto', sans-serif" }}>
                         Visit our showroom in Alwar or book a virtual consultation today. Our team is ready to help you find the perfect hardware for your home.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a
                             href="tel:+918209815805"
                             className="bg-[#c9a84c] text-[#0f2424] px-10 py-3.5 text-[11px] tracking-[0.2em] font-bold hover:bg-[#b8963e] transition-colors"
-                            style={{ fontFamily: "'Montserrat', sans-serif" }}
+                            style={{ fontFamily: "'Roboto', sans-serif" }}
                         >
                             BOOK CONSULTATION
                         </a>
@@ -487,7 +487,7 @@ const AboutPage = () => {
                             href="https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/catalouge/Shree+ji+Catalouge+Pdf.pdf"
                             download
                             className="border border-white/25 text-white px-10 py-3.5 text-[11px] tracking-[0.2em] font-semibold hover:border-white/60 hover:bg-white/5 transition-all"
-                            style={{ fontFamily: "'Montserrat', sans-serif" }}
+                            style={{ fontFamily: "'Roboto', sans-serif" }}
                         >
                             DOWNLOAD CATALOGUE
                         </a>

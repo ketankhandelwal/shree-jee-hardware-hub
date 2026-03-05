@@ -13,7 +13,7 @@ export const ConsultationSection = () => (
             >
                 <h2
                     className="text-3xl md:text-4xl font-semibold text-foreground mb-4"
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                 >
                     Book A Virtual Consultation
                 </h2>
@@ -24,7 +24,7 @@ export const ConsultationSection = () => (
                 <a
                     href="tel:+918209815805"
                     className="inline-block bg-[#1a3a3a] text-white px-12 py-3.5 text-[11px] tracking-[0.2em] font-semibold hover:bg-[#122828] transition-colors"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                 >
                     BOOK NOW
                 </a>
@@ -42,7 +42,7 @@ export const ConsultationSection = () => (
             >
                 <h2
                     className="text-3xl md:text-4xl font-semibold text-foreground mb-4"
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                 >
                     Shree Jee's Catalogue
                 </h2>
@@ -53,7 +53,7 @@ export const ConsultationSection = () => (
                 <a
                     href="tel:+918209815805"
                     className="inline-block bg-[#1a3a3a] text-white px-10 py-3.5 text-[11px] tracking-[0.2em] font-semibold hover:bg-[#122828] transition-colors"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    style={{ fontFamily: "'Roboto', sans-serif" }}
                 >
                     REQUEST OUR CATALOGUE
                 </a>
