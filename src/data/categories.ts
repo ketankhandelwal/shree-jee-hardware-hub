@@ -16,7 +16,7 @@ export const categories: Category[] = [
     id: "telescopic-channel",
     label: "Telescopic Channel",
     pages: "Page 13",
-    image: "/public/telescopic/Screenshot 2026-03-22 at 09.58.49.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/telecropic_channel/Screenshot+2026-03-22+at+09.58.49.png",
   },
   {
     id: "cupboard-hinges",
@@ -28,7 +28,7 @@ export const categories: Category[] = [
     id: "ss-handle",
     label: "Stainless Steel Handle",
     pages: "Page 15–18",
-    image: "/public/handles/Screenshot 2026-03-22 at 10.59.23.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/handles/Screenshot+2026-03-22+at+10.59.23.png",
   },
   {
     id: "ss-aldrops",
