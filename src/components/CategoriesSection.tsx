@@ -4,17 +4,17 @@ import { Link } from "react-router-dom"; // Import Link
 const categories = [
   {
     title: "Handles",
-    image: "public/Gemini_Generated_Image_igqii5igqii5igqi.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/Gemini_Generated_Image_igqii5igqii5igqi.png",
     slug: "cabinet-handle" // The ID used in your URL
   },
   {
     title: "Knobs",
-    image: "public/Gemini_Generated_Image_65i2wi65i2wi65i2.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/knobs/Gemini_Generated_Image_65i2wi65i2wi65i2.png",
     slug: "knob" // Adjust based on your actual data IDs
   },
   {
     title: "Hooks",
-    image: "public/Gemini_Generated_Image_f889ohf889ohf889.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/hooks/Gemini_Generated_Image_f889ohf889ohf889.png",
     slug: "hook" // Adjust based on your actual data IDs
   },
 ];

@@ -3,14 +3,14 @@ import { ChevronRight } from "lucide-react";
 
 const collections = [
   {
-    image: "public/Screenshot 2026-03-22 at 09.10.08.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/Screenshot+2026-03-22+at+09.10.08.png",
     dark: true,
     overlayText: null,
     name: "Cabinet Handles",
     slug: "cabinet-handle",
   },
   {
-    image: "public/Screenshot 2026-03-19 at 09.24.52.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/telecropic_channel/Screenshot+2026-03-22+at+09.58.49.png",
     dark: false,
     name: "Telescopic Channel",
     overlayText: null,
@@ -45,14 +45,14 @@ const collections = [
     slug: "knob",
   },
   {
-    image: "/public/Screenshot 2026-03-22 at 09.10.43.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/Screenshot+2026-03-22+at+09.10.43.png",
     name: "Chest Handle",
     dark: false,
     overlayText: null,
     slug: "chest-handle",
   },
   {
-    image: "/public/hinges/Screenshot 2026-03-22 at 10.14.43.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/hinge/Screenshot+2026-03-22+at+10.14.43.png",
     name: "Hinges",
     dark: false,
     overlayText: null,
@@ -73,7 +73,7 @@ const collections = [
     slug: "curtain-bracket",
   },
   {
-    image: "public/Screenshot 2026-03-19 at 09.51.32.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/bolt/Screenshot+2026-03-19+at+09.51.32.png",
     name: "Tower Bolt",
     dark: false,
     overlayText: null,

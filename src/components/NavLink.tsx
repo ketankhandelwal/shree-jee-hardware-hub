@@ -6,7 +6,7 @@ const favourites = [
   {
     name: "Ethereal Wing Handle",
     price: "Starts from Rs. 120",
-    image: "public/Screenshot 2026-03-22 at 09.10.08.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/Screenshot+2026-03-22+at+09.10.08.png",
     tag: "Bestseller",
     desc: "Handcrafted architectural hardware."
   },

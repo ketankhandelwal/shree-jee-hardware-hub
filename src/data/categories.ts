@@ -10,7 +10,7 @@ export const categories: Category[] = [
     id: "cabinet-handle",
     label: "Cabinet Handle",
     pages: "Page 03–12",
-    image: "/public/Screenshot 2026-03-22 at 09.07.11.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/Screenshot+2026-03-22+at+09.07.11.png",
   },
   {
     id: "telescopic-channel",
@@ -46,7 +46,7 @@ export const categories: Category[] = [
     id: "chest-handle",
     label: "Chest Handle",
     pages: "Page 24",
-    image: "/public/Screenshot 2026-03-22 at 09.10.43.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/Screenshot+2026-03-22+at+09.10.43.png",
   },
   {
     id: "hinges",
