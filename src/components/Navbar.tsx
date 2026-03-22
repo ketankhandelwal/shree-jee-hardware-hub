@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Search, Menu, X, ChevronDown, PenLine } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -93,7 +93,16 @@ const ProductsDropdown = ({ onClose }: { onClose: () => void }) => (
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleProductsEnter = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -108,8 +117,8 @@ export const Navbar = () => {
   return (
     <header className="sticky top-0 z-50">
       {/* Main navbar */}
-      <div className="bg-[#1a3a3a]">
-        <div className="relative flex items-center justify-between h-20 px-6 md:px-12">
+      <div className={`bg-[#1a3a3a] transition-all duration-300 ${isScrolled ? "shadow-lg" : ""}`}>
+        <div className={`relative flex items-center justify-between px-6 md:px-12 transition-all duration-300 ${isScrolled ? "h-14 md:h-16" : "h-20"}`}>
           {/* Left: Menu + Search */}
           <div className="flex items-center gap-5">
             <button
@@ -129,7 +138,7 @@ export const Navbar = () => {
             <img
               src={LOGO_URL}
               alt="Shree Ji Hardwares"
-              className="h-16 w-auto object-contain drop-shadow-sm"
+              className={`w-auto object-contain drop-shadow-sm transition-all duration-300 ${isScrolled ? "h-10 md:h-12" : "h-16"}`}
             />
           </Link>
 
@@ -148,7 +157,7 @@ export const Navbar = () => {
         </div>
 
         {/* Navigation Links row */}
-        <nav className="hidden lg:flex items-center justify-center gap-10 pb-4">
+        <nav className={`hidden lg:flex items-center justify-center transition-all duration-300 ${isScrolled ? "gap-8 pb-2 pt-0" : "gap-10 pb-4"}`}>
           {navLinks.map(({ label, href, hasDropdown }) => {
             if (hasDropdown) {
               return (

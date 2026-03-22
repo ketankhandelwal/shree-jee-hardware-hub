@@ -12,6 +12,7 @@ import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { SplashScreen } from "./components/SplashScreen";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => {
         <Sonner />
         {showSplash && <SplashScreen onDone={handleSplashDone} />}
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/contact" element={<ContactPage />} />
