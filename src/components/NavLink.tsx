@@ -5,32 +5,32 @@ import { motion, AnimatePresence } from "framer-motion";
 const favourites = [
   {
     name: "Ethereal Wing Handle",
-    price: "₹7,299",
+    price: "Starts from Rs. 120",
     image: "public/Screenshot 2026-03-22 at 09.10.08.png",
     tag: "Bestseller",
     desc: "Handcrafted architectural hardware."
   },
   {
-    name: "Royal Gold Knob",
-    price: "₹1,499",
+    name: "HINGES",
+    price: "Starts from Rs. 120",
     image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/hinge/Screenshot+2026-03-22+at+11.53.55.png",
     tag: "New Collection",
   },
   {
-    name: "Milano Slim Handle",
-    price: "₹2,199",
+    name: "CABINET HANDLE",
+    price: "Starts from Rs. 65 per inch",
     image: "/public/Screenshot 2026-03-22 at 09.08.59.png",
     tag: "Minimalist",
   },
   {
-    name: "Copperline Hook Set",
-    price: "₹3,499",
+    name: "ALDROPS",
+    price: "Starts from Rs. 120",
     image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/Aldrops/Screenshot+2026-03-22+at+11.30.45.png",
     tag: "Limited Edition",
   },
 ];
 
-export const FavouritesSection = () => {
+export const ShopFavourites = () => {
   const [wishlisted, setWishlisted] = useState<Record<number, boolean>>({});
 
   const toggleWishlist = (e: React.MouseEvent, index: number) => {

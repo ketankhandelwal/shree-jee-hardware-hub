@@ -5,7 +5,7 @@ import { CategoriesSection } from "@/components/CategoriesSection";
 import { ShowcaseSection } from "@/components/ShowcaseSection";
 import { BestSellersSection } from "@/components/BestSellersSection";
 import { GuaranteeSection } from "@/components/GuaranteeSection";
-import { NavLink as ShopFavourites } from "@/components/NavLink";
+import { ShopFavourites } from "@/components/NavLink";
 import { OurStorySection } from "@/components/OurStorySection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { InstagramSection } from "@/components/InstagramSection";

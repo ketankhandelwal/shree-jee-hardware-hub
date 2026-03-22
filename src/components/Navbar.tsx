@@ -11,7 +11,7 @@ const col2 = categories.slice(8);
 const navLinks = [
   { label: "HOME", href: "/" },
   { label: "PRODUCTS", href: "/products", hasDropdown: true },
-  { label: "ABOUT US", href: "/about" },
+  // { label: "ABOUT US", href: "/about" },
   { label: "CONTACT US", href: "/contact" },
   { label: "CATALOG", href: "/#catalog" },
 ];
@@ -29,38 +29,40 @@ const ProductsDropdown = ({ onClose }: { onClose: () => void }) => (
   >
     {/* Arrow notch */}
     <div className="flex justify-center">
-      <div className="w-3 h-3 bg-[#0f2424] rotate-45 -mt-1.5 shadow-sm" />
+      <div className="w-3 h-3 bg-[#0d1f1f] rotate-45 -mt-1.5 border-l border-t border-[#c9a84c]/20" />
     </div>
 
     {/* Panel */}
-    <div className="bg-[#0f2424] shadow-2xl border border-white/5 p-8">
+    <div
+      className="bg-[#0d1f1f] shadow-2xl border border-[#c9a84c]/18 p-0 overflow-hidden"
+      style={{ fontFamily: "'Roboto', sans-serif" }}
+    >
       {/* Header */}
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-6 h-px bg-[#c9a84c]" />
-        <span
-          className="text-[#c9a84c] text-[9px] tracking-[0.4em]"
-          style={{ fontFamily: "'Roboto', sans-serif" }}
-        >
+      <div className="flex items-center gap-3 px-7 pt-6 pb-0">
+        <div className="w-7 h-[1.5px] bg-gradient-to-r from-[#c9a84c] to-[#e8c96a]" />
+        <span className="text-[#c9a84c] text-[9px] tracking-[0.42em] font-medium">
           ALL CATEGORIES
         </span>
       </div>
 
       {/* 2-column category list */}
-      <div className="grid grid-cols-2 gap-x-10 gap-y-0">
+      <div className="grid grid-cols-2 gap-x-8 px-7 pt-4">
         {[col1, col2].map((col, ci) => (
           <ul key={ci} className="space-y-0">
-            {col.map((cat) => (
-              <li key={cat.id}>
+            {col.map((cat, i) => (
+              <li key={cat.id} className="group relative">
+                {/* Gold left accent bar on hover */}
+                <span className="absolute left-0 top-0 h-full w-[3px] bg-[#c9a84c] opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
                 <Link
                   to={`/products/${cat.id}`}
                   onClick={onClose}
-                  className="group flex items-center gap-2 py-[9px] border-b border-white/8 hover:border-white/20 transition-colors duration-150"
+                  className={`flex items-center justify-between py-[9px] border-b border-white/[0.06] transition-all duration-150 group-hover:border-[#c9a84c]/35 group-hover:pl-3 ${i === 0 ? "border-t border-white/[0.06]" : ""}`}
                 >
-                  <span
-                    className="text-[11.5px] text-white/60 group-hover:text-white tracking-[0.08em] underline underline-offset-[3px] decoration-white/20 group-hover:decoration-white transition-all duration-150"
-                    style={{ fontFamily: "'Roboto', sans-serif" }}
-                  >
+                  <span className="text-[12.5px] text-white/55 group-hover:text-white tracking-[0.07em] font-semibold transition-colors duration-150">
                     {cat.label}
+                  </span>
+                  <span className="text-[10px] text-[#c9a84c] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-150">
+                    →
                   </span>
                 </Link>
               </li>
@@ -70,19 +72,15 @@ const ProductsDropdown = ({ onClose }: { onClose: () => void }) => (
       </div>
 
       {/* View all link */}
-      <div className="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+      <div className="mx-7 mt-5 py-4 border-t border-[#c9a84c]/20 flex items-center justify-between">
         <Link
           to="/products"
           onClick={onClose}
-          className="text-[10px] tracking-[0.25em] text-[#c9a84c] hover:text-white transition-colors font-semibold"
-          style={{ fontFamily: "'Roboto', sans-serif" }}
+          className="text-[10px] tracking-[0.28em] text-[#c9a84c] hover:text-white transition-colors font-semibold"
         >
           VIEW ALL COLLECTIONS →
         </Link>
-        <span
-          className="text-[9px] text-white/25 tracking-widest"
-          style={{ fontFamily: "'Roboto', sans-serif" }}
-        >
+        <span className="text-[9px] text-white/20 tracking-widest">
           {categories.length} CATEGORIES
         </span>
       </div>

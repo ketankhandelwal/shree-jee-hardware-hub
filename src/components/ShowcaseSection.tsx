@@ -1,137 +1,121 @@
 import { useRef } from "react";
 import { ChevronRight } from "lucide-react";
 
-
 const collections = [
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "public/Screenshot 2026-03-22 at 09.10.08.png",
     dark: true,
     overlayText: null,
-    name: "Cabinet Handles"
+    name: "Cabinet Handles",
+    slug: "cabinet-handle",
   },
   {
     image: "public/Screenshot 2026-03-19 at 09.24.52.png",
     dark: false,
     name: "Telescopic Channel",
-    overlayText: null
-
-    // {
-    //   eyebrow: "NEW COLLECTION",
-    //   title: "WOOD",
-    // },
+    overlayText: null,
+    slug: "telescopic-channel",
   },
   {
-    image: "public/Screenshot 2026-03-19 at 09.28.25 copy.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/hinge/Screenshot+2026-03-22+at+11.53.55.png",
     dark: false,
     name: "Cupboard Hinges",
-    overlayText: null
-
-    //  {
-    //   brand: "MANTARA",
-    //   sub: "DETAILS MATTER",
-    //   title: "YOUR\nSTYLE.\nCOUNTLESS\nCHOICES.",
-    //   footer: "LE | HOOKS | KNOBS",
-    // },
+    overlayText: null,
+    slug: "cupboard-hinges",
   },
   {
-    image: "public/Screenshot 2026-03-19 at 09.42.34.png",
+    image: "https://www.greeninterio.com/wp-content/uploads/2015/10/GIBPHH111.jpg",
     name: "Stainless Steel Handle",
     dark: true,
-    overlayText: null
-
-    // {
-    //   title: "EVERY\nDETAIL",
-    //   sub: "TELLS A STORY",
-    // },
+    overlayText: null,
+    slug: "ss-handle",
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/Aldrops/WhatsApp Image 2026-03-01 at 15.44.11.jpeg",
     name: "Stainless Steel Aldrops",
     dark: false,
     overlayText: null,
+    slug: "ss-aldrops",
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/knobs/WhatsApp+Image+2026-03-01+at+15.42.48+(2).jpeg",
     name: "Knob",
     dark: true,
     overlayText: null,
+    slug: "knob",
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "/public/Screenshot 2026-03-22 at 09.10.43.png",
     name: "Chest Handle",
     dark: false,
-    overlayText: {
-      eyebrow: "NEW COLLECTION",
-      title: "WOOD",
-    },
+    overlayText: null,
+    slug: "chest-handle",
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "/public/hinges/Screenshot 2026-03-22 at 10.14.43.png",
     name: "Hinges",
     dark: false,
-    overlayText: {
-      brand: "MANTARA",
-      sub: "DETAILS MATTER",
-      title: "YOUR\nSTYLE.\nCOUNTLESS\nCHOICES.",
-      footer: "LE | HOOKS | KNOBS",
-    },
+    overlayText: null,
+    slug: "hinges",
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/sofa_leg/Screenshot+2026-03-22+at+12.00.51.png",
     name: "Sofa Leg",
     dark: true,
-    overlayText: null
-
-    // {
-    //   title: "EVERY\nDETAIL",
-    //   sub: "TELLS A STORY",
-    // },
+    overlayText: null,
+    slug: "sofa-leg",
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/curtain_brackets/Gemini_Generated_Image_xpgnkgxpgnkgxpgn.png",
     name: "Curtain Bracket",
     dark: false,
     overlayText: null,
+    slug: "curtain-bracket",
   },
   {
     image: "public/Screenshot 2026-03-19 at 09.51.32.png",
     name: "Tower Bolt",
     dark: false,
     overlayText: null,
+    slug: "tower-bolt",
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/door_magnets/Screenshot+2026-03-22+at+12.18.57.png",
     name: "Door Magnet & Door Closer",
     dark: false,
     overlayText: null,
+    slug: "door-magnet-closer",
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/multipurpose/Screenshot+2026-03-22+at+12.25.50.png",
     name: "Multipurpose & Cupboard Lock",
     dark: false,
     overlayText: null,
+    slug: "lock",
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/kitchen/Screenshot+2026-03-22+at+12.32.12.png",
     name: "Kitchen Accessories",
     dark: false,
     overlayText: null,
+    slug: "kitchen-accessories",
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/hooks/Screenshot+2026-03-22+at+12.34.56.png",
     name: "Hook",
     dark: false,
     overlayText: null,
+    slug: "hook",
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/others/Screenshot+2026-03-22+at+12.38.55.png",
     name: "Other Fittings & SS Pull, Mortise, Screw",
     dark: false,
     overlayText: null,
+    slug: "other-fittings",
   },
 ];
 
-// Reliable system font stacks — no external font loading needed
 const SANS = "'Helvetica Neue', Helvetica, Arial, sans-serif";
 const SERIF = "Georgia, 'Times New Roman', serif";
 
@@ -153,7 +137,7 @@ export const ShowcaseSection = () => {
           scrollSnapType: "x mandatory",
           msOverflowStyle: "none",
           scrollbarWidth: "none",
-        }}
+        } as React.CSSProperties}
       >
         {collections.map((col, i) => (
           <div
@@ -161,128 +145,107 @@ export const ShowcaseSection = () => {
             className="flex-shrink-0 flex flex-col"
             style={{ width: "280px", scrollSnapAlign: "start" }}
           >
-            {/* Card image */}
             <div
               className="relative overflow-hidden"
               style={{ aspectRatio: "3 / 4" }}
             >
               <img
                 src={col.image}
-                alt=""
+                alt={col.name}
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
 
-
-
-              {/* Card 2: NEW COLLECTION · WOOD */}
               {col.overlayText && "eyebrow" in col.overlayText && (
                 <div className="absolute inset-0 flex flex-col items-start justify-end p-6 pb-10">
                   <p
                     className="text-black text-[11px] tracking-[0.2em] mb-1 uppercase"
                     style={{ fontFamily: SANS }}
                   >
-                    {col.overlayText.eyebrow}
+                    {(col.overlayText as any).eyebrow}
                   </p>
                   <p
                     className="text-black font-light tracking-[0.14em]"
                     style={{ fontFamily: SERIF, fontSize: "36px" }}
                   >
-                    {col.overlayText.title}
+                    {(col.overlayText as any).title}
                   </p>
                 </div>
               )}
 
-              {/* Card 3: YOUR STYLE */}
               {col.overlayText && "brand" in col.overlayText && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
                   <p
                     className="text-white text-[11px] tracking-[0.28em] mb-0.5 uppercase"
                     style={{ fontFamily: SANS }}
                   >
-                    {col.overlayText.brand}
+                    {(col.overlayText as any).brand}
                   </p>
                   <p
                     className="text-white/65 text-[9px] tracking-[0.22em] mb-5 uppercase"
                     style={{ fontFamily: SANS }}
                   >
-                    {col.overlayText.sub}
+                    {(col.overlayText as any).sub}
                   </p>
                   <p
                     className="text-white/80 text-center font-light leading-[1.2] tracking-[0.06em]"
-                    style={{
-                      fontFamily: SERIF,
-                      fontSize: "26px",
-                      whiteSpace: "pre-line",
-                    }}
+                    style={{ fontFamily: SERIF, fontSize: "26px", whiteSpace: "pre-line" }}
                   >
-                    {col.overlayText.title}
+                    {(col.overlayText as any).title}
                   </p>
                   <p
                     className="text-white/55 text-[8px] tracking-[0.22em] mt-5 uppercase"
                     style={{ fontFamily: SANS }}
                   >
-                    {col.overlayText.footer}
+                    {(col.overlayText as any).footer}
                   </p>
                 </div>
               )}
 
-              {/* Card 4: EVERY DETAIL */}
               {col.overlayText &&
                 "sub" in col.overlayText &&
                 !("brand" in col.overlayText) && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
                     <p
                       className="text-white text-center font-bold leading-[1.05] tracking-[0.12em] uppercase"
-                      style={{
-                        fontFamily: SANS,
-                        fontSize: "30px",
-                        whiteSpace: "pre-line",
-                      }}
+                      style={{ fontFamily: SANS, fontSize: "30px", whiteSpace: "pre-line" }}
                     >
-                      {col.overlayText.title}
+                      {(col.overlayText as any).title}
                     </p>
                     <p
                       className="text-white/75 text-[11px] tracking-[0.28em] mt-3 uppercase"
                       style={{ fontFamily: SANS }}
                     >
-                      {col.overlayText.sub}
+                      {(col.overlayText as any).sub}
                     </p>
                   </div>
                 )}
             </div>
 
-            {/* Explore Now label */}
             <p
               className="text-[12px] font-medium tracking-[0.16em] text-gray-900 mt-3 mb-4"
               style={{ fontFamily: SANS }}
             >
-              Explore Now
+              {col.name}
             </p>
 
-            {/* VIEW COLLECTION button */}
-            <button
-              className="w-full py-[14px] text-[10px] font-semibold tracking-[0.24em] text-white uppercase transition-colors"
-              style={{
-                backgroundColor: "#111111",
-                fontFamily: SANS,
+            <a
+              href={`/products/${col.slug}`}
+              className="block w-full py-[14px] text-[10px] font-semibold tracking-[0.24em] text-white uppercase text-center transition-colors"
+              style={{ backgroundColor: "#111111", fontFamily: SANS }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#2a2a2a";
               }}
-              onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.backgroundColor =
-                "#2a2a2a")
-              }
-              onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.backgroundColor =
-                "#111111")
-              }
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#111111";
+              }}
             >
               VIEW COLLECTION
-            </button>
+            </a>
           </div>
         ))}
       </div>
 
-      {/* Right arrow */}
       <button
         onClick={scrollRight}
         className="absolute right-3 top-[45%] -translate-y-1/2 bg-white border border-gray-200 shadow-md rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-50 transition-colors z-10"
@@ -290,10 +253,6 @@ export const ShowcaseSection = () => {
       >
         <ChevronRight className="w-5 h-5 text-gray-800" />
       </button>
-
-      <style>{`
-        div::-webkit-scrollbar { display: none; }
-      `}</style>
     </section>
   );
 };
