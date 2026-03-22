@@ -3,12 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const images = [
   "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/photo-1631048498692-af6262577031.avif",
+  "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1556910096-6f5e72db6803?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1601760561441-16420502c7e0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1564540586988-aa4e53c3d799?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1664261421791-c25c5760f577?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/misc/photo-1631048500354-c7b943a930ea.avif",
-  "https://images.unsplash.com/photo-1556912177-d527a7185289?auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1536376071141-ad5284107101?auto=format&fit=crop&q=80",
   "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80",
   "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1617806118233-18e1db207fa6?auto=format&fit=crop&q=80"
 ];
 
 export const HeroSection = () => {
@@ -23,15 +26,15 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative h-[90vh] min-h-[600px] overflow-hidden bg-black">
-      {/* Background Image Slider */}
-      <AnimatePresence mode="wait">
+    <section className="relative h-[90vh] min-h-[600px] overflow-hidden bg-neutral-200">
+      {/* Background Image Slider — no mode="wait" so images crossfade without a black gap */}
+      <AnimatePresence>
         <motion.div
           key={index}
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <img
@@ -42,9 +45,8 @@ export const HeroSection = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Modern Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-      <div className="absolute inset-0 bg-black/10" />
+      {/* Lighter overlay — only bottom-up gradient for text legibility, no full-screen dimming */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
       {/* Content Container */}
       <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-20">
@@ -86,7 +88,7 @@ export const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Slide Indicators (7 Bars) */}
+        {/* Slide Indicators */}
         <div className="mt-16 flex gap-3">
           {images.map((_, i) => (
             <div
