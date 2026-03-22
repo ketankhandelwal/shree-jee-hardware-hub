@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom"; // 1. Import the hook
 
 const moodBoards = [
   {
@@ -50,107 +51,117 @@ const popSpring = {
   mass: 0.8,
 };
 
-export const OurStorySection = () => (
-  <section className="py-20 bg-white overflow-hidden">
-    <div className="px-4 md:px-8 lg:px-16">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+export const OurStorySection = () => {
+  const navigate = useNavigate(); // 2. Initialize the hook
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3 }}
-          className="relative h-[480px] md:h-[540px] flex items-center justify-center"
-        >
-          {moodBoards.map((board, i) => (
-            <motion.div
-              key={board.label}
-              initial={{ x: 0, y: 0, scale: 0.25, opacity: 0, rotate: 0 }}
-              whileInView={{
-                x: board.popTo.x,
-                y: board.popTo.y,
-                scale: 1,
-                opacity: 1,
-                rotate: board.rotation,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                ...popSpring,
-                delay: 0.15 + i * 0.10,
-                opacity: { duration: 0.2, delay: 0.15 + i * 0.10 },
-              }}
-              whileHover={{
-                scale: 1.06,
-                zIndex: 10,
-                rotate: 0,
-                transition: { type: "spring", stiffness: 400, damping: 20 },
-              }}
-              className="absolute w-44 md:w-52 shadow-xl cursor-pointer"
-              style={{
-                backgroundColor: board.color,
-                zIndex: board.zIndex,
-                transformOrigin: "center center",
-              }}
-            >
-              <div className="p-3">
-                {/* Real product image */}
-                <div className="w-full h-28 mb-3 overflow-hidden">
-                  <img
-                    src={board.image}
-                    alt={board.label}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex gap-1 mb-2">
-                  {[...Array(3)].map((_, d) => (
-                    <div
-                      key={d}
-                      className="w-2 h-2 rounded-full"
-                      style={{ backgroundColor: board.accent, opacity: 0.45 }}
+  return (
+    <section className="py-20 bg-white overflow-hidden">
+      <div className="px-4 md:px-8 lg:px-16">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+
+          {/* Animated Mood Boards Container */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3 }}
+            className="relative h-[480px] md:h-[540px] flex items-center justify-center"
+          >
+            {moodBoards.map((board, i) => (
+              <motion.div
+                key={board.label}
+                initial={{ x: 0, y: 0, scale: 0.25, opacity: 0, rotate: 0 }}
+                whileInView={{
+                  x: board.popTo.x,
+                  y: board.popTo.y,
+                  scale: 1,
+                  opacity: 1,
+                  rotate: board.rotation,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  ...popSpring,
+                  delay: 0.15 + i * 0.10,
+                  opacity: { duration: 0.2, delay: 0.15 + i * 0.10 },
+                }}
+                whileHover={{
+                  scale: 1.06,
+                  zIndex: 10,
+                  rotate: 0,
+                  transition: { type: "spring", stiffness: 400, damping: 20 },
+                }}
+                className="absolute w-44 md:w-52 shadow-xl cursor-pointer"
+                style={{
+                  backgroundColor: board.color,
+                  zIndex: board.zIndex,
+                  transformOrigin: "center center",
+                }}
+              >
+                <div className="p-3">
+                  <div className="w-full h-28 mb-3 overflow-hidden">
+                    <img
+                      src={board.image}
+                      alt={board.label}
+                      className="w-full h-full object-cover"
                     />
-                  ))}
+                  </div>
+                  <div className="flex gap-1 mb-2">
+                    {[...Array(3)].map((_, d) => (
+                      <div
+                        key={d}
+                        className="w-2 h-2 rounded-full"
+                        style={{ backgroundColor: board.accent, opacity: 0.45 }}
+                      />
+                    ))}
+                  </div>
+                  <p
+                    className="font-semibold text-gray-800 mb-1"
+                    style={{ fontFamily: "'Roboto', sans-serif", fontSize: "15px" }}
+                  >
+                    {board.label}
+                  </p>
+                  <p className="text-[10px] text-gray-500 leading-relaxed">
+                    {board.description}
+                  </p>
                 </div>
-                <p
-                  className="font-semibold text-gray-800 mb-1"
-                  style={{ fontFamily: "'Roboto', sans-serif", fontSize: "15px" }}
-                >
-                  {board.label}
-                </p>
-                <p className="text-[10px] text-gray-500 leading-relaxed">
-                  {board.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="flex flex-col justify-center"
-        >
-          <h2
-            className="text-4xl md:text-5xl font-light text-foreground mb-5 leading-tight"
-            style={{ fontFamily: "'Roboto', sans-serif" }}
+          {/* Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="flex flex-col justify-center"
           >
-            Inspiration Starts Here
-          </h2>
-          <p className="text-gray-500 leading-relaxed mb-8 text-base">
-            Discover our specially curated mood boards and let us inspire your
-            journey of creativity. From classic art-deco to modern minimalism —
-            find the style that speaks to your space.
-          </p>
-          <button
-            className="self-start bg-[#1a3a3a] text-white px-10 py-3.5 text-[11px] tracking-[0.2em] font-semibold hover:bg-[#122828] transition-colors"
-            style={{ fontFamily: "'Roboto', sans-serif" }}
-          >
-            EXPLORE NOW
-          </button>
-        </motion.div>
+            <h2
+              className="text-4xl md:text-5xl font-light text-foreground mb-5 leading-tight"
+              style={{ fontFamily: "'Roboto', sans-serif" }}
+            >
+              Inspiration Starts Here
+            </h2>
+            <p className="text-gray-500 leading-relaxed mb-8 text-base">
+              Discover our specially curated mood boards and let us inspire your
+              journey of creativity. From classic art-deco to modern minimalism —
+              find the style that speaks to your space.
+            </p>
 
+            {/* 3. Added the onClick navigation */}
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => navigate("/products")}
+              className="self-start bg-[#1a3a3a] text-white px-10 py-3.5 text-[11px] tracking-[0.2em] font-semibold hover:bg-[#122828] transition-colors shadow-lg"
+              style={{ fontFamily: "'Roboto', sans-serif" }}
+            >
+              EXPLORE NOW
+            </motion.button>
+          </motion.div>
+
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};

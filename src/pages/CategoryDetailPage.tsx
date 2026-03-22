@@ -42,7 +42,7 @@ const CategoryDetailPage = () => {
                     "image": p.image,
                     "offers": {
                         "@type": "Offer",
-                        "price": p.price.replace(/[^0-9]/g, ""),
+
                         "priceCurrency": "INR",
                         "availability": "https://schema.org/InStock",
                         "seller": { "@type": "Organization", "name": "Shree Ji Hardwares" }
@@ -98,41 +98,42 @@ const CategoryDetailPage = () => {
             </div>
 
             {/* ── Category Bubble Row (Other Categories) ── */}
-            <div className="bg-white border-b border-gray-100 py-5 px-4 md:px-12 lg:px-20">
+            {/* ── Category Bubble Row (Other Categories) ── */}
+            <div className="bg-white border-b border-gray-100 py-8 px-4 md:px-12 lg:px-20">
                 <div className="max-w-7xl mx-auto relative">
                     {/* Scroll left arrow */}
                     <button
                         onClick={() => scrollBubbles("left")}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white shadow border border-gray-100 flex items-center justify-center hover:border-[#1a3a3a] transition-colors"
+                        className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white shadow-lg border border-gray-100 rounded-full flex items-center justify-center hover:border-[#1a3a3a] transition-colors"
                         aria-label="Scroll left"
                     >
-                        <ChevronLeft className="w-4 h-4 text-[#1a3a3a]" />
+                        <ChevronLeft className="w-5 h-5 text-[#1a3a3a]" />
                     </button>
 
                     {/* Scroll container */}
                     <div
                         ref={scrollRef}
-                        className="flex gap-5 overflow-x-auto scrollbar-hide scroll-smooth px-10"
+                        className="flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth px-10 pb-2"
                     >
                         {/* "All" bubble */}
                         <Link
                             to="/products"
-                            className="flex-shrink-0 flex flex-col items-center gap-2 group"
+                            className="flex-shrink-0 flex flex-col items-center gap-3 group"
                         >
-                            <div className="w-16 h-16 rounded-full bg-[#1a3a3a] flex items-center justify-center shadow-md group-hover:ring-2 group-hover:ring-[#c9a84c] transition-all">
-                                <span className="text-white text-[9px] tracking-widest font-semibold" style={{ fontFamily: "'Roboto', sans-serif" }}>ALL</span>
+                            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-[#1a3a3a] flex items-center justify-center shadow-lg group-hover:ring-2 group-hover:ring-[#c9a84c] transition-all duration-300">
+                                <span className="text-white text-[11px] tracking-[0.2em] font-semibold" style={{ fontFamily: "'Roboto', sans-serif" }}>ALL</span>
                             </div>
-                            <span className="text-[10px] text-gray-500 group-hover:text-[#1a3a3a] transition-colors text-center w-16 leading-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
+                            <span className="text-[11px] uppercase tracking-wider text-gray-500 group-hover:text-[#1a3a3a] transition-colors text-center w-24 md:w-28 leading-tight font-medium" style={{ fontFamily: "'Roboto', sans-serif" }}>
                                 All
                             </span>
                         </Link>
 
                         {/* Current category — active state */}
-                        <div className="flex-shrink-0 flex flex-col items-center gap-2">
-                            <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-[#c9a84c] ring-offset-2 shadow-md">
+                        <div className="flex-shrink-0 flex flex-col items-center gap-3">
+                            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden ring-2 ring-[#c9a84c] ring-offset-4 shadow-xl">
                                 <img src={current.image} alt={current.label} className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-[10px] text-[#1a3a3a] font-semibold text-center w-16 leading-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
+                            <span className="text-[11px] uppercase tracking-wider text-[#1a3a3a] font-bold text-center w-24 md:w-28 leading-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
                                 {current.label}
                             </span>
                         </div>
@@ -142,17 +143,17 @@ const CategoryDetailPage = () => {
                             <Link
                                 key={cat.id}
                                 to={`/products/${cat.id}`}
-                                className="flex-shrink-0 flex flex-col items-center gap-2 group"
+                                className="flex-shrink-0 flex flex-col items-center gap-3 group"
                             >
-                                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 group-hover:border-[#c9a84c] group-hover:ring-2 group-hover:ring-[#c9a84c]/30 transition-all shadow-sm">
+                                <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border border-gray-200 group-hover:border-[#c9a84c] group-hover:ring-4 group-hover:ring-[#c9a84c]/10 transition-all duration-500 shadow-md">
                                     <img
                                         src={cat.image}
                                         alt={cat.label}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-400"
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                         loading="lazy"
                                     />
                                 </div>
-                                <span className="text-[10px] text-gray-500 group-hover:text-[#1a3a3a] transition-colors text-center w-16 leading-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
+                                <span className="text-[11px] uppercase tracking-wider text-gray-500 group-hover:text-[#1a3a3a] transition-colors text-center w-24 md:w-28 leading-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
                                     {cat.label}
                                 </span>
                             </Link>
@@ -162,10 +163,10 @@ const CategoryDetailPage = () => {
                     {/* Scroll right arrow */}
                     <button
                         onClick={() => scrollBubbles("right")}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white shadow border border-gray-100 flex items-center justify-center hover:border-[#1a3a3a] transition-colors"
+                        className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white shadow-lg border border-gray-100 rounded-full flex items-center justify-center hover:border-[#1a3a3a] transition-colors"
                         aria-label="Scroll right"
                     >
-                        <ChevronRight className="w-4 h-4 text-[#1a3a3a]" />
+                        <ChevronRight className="w-5 h-5 text-[#1a3a3a]" />
                     </button>
                 </div>
             </div>
@@ -184,21 +185,22 @@ const CategoryDetailPage = () => {
                                 className="group relative flex flex-col bg-white border border-gray-100 hover:border-[#1a3a3a]/20 hover:shadow-lg transition-all duration-300"
                             >
                                 {/* Image */}
-                                <div className="relative aspect-square overflow-hidden bg-[#f5f3f0]">
+                                {/* Image Container */}
+                                <div className="relative aspect-square overflow-hidden bg-[#f5f3f0] flex items-center justify-center p-4">
                                     <img
                                         src={product.image}
                                         alt={product.name}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        className="max-w-full max-h-full w-auto h-auto object-contain group-hover:scale-110 transition-transform duration-500"
                                         loading="lazy"
                                     />
-                                    {/* Wishlist */}
+
+                                    {/* Wishlist & Brand Tags remain the same */}
                                     <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-sm hover:bg-white">
                                         <Heart className="w-3.5 h-3.5 text-[#1a3a3a]" strokeWidth={1.5} />
                                     </button>
-                                    {/* Brand tag */}
                                     <div className="absolute top-3 left-3">
-                                        <span className="text-[8px] text-white/80 tracking-[0.2em] bg-[#1a3a3a]/70 backdrop-blur-sm px-2 py-0.5" style={{ fontFamily: "'Roboto', sans-serif" }}>
-                                            SHREE JEE
+                                        <span className="text-[8px] text-white/80 tracking-[0.2em] bg-[#1a3a3a]/70 backdrop-blur-sm px-2 py-0.5 uppercase">
+                                            Shree Ji
                                         </span>
                                     </div>
                                 </div>
@@ -211,12 +213,7 @@ const CategoryDetailPage = () => {
                                     >
                                         {product.name}
                                     </p>
-                                    <p
-                                        className="text-sm font-bold text-[#1a3a3a]"
-                                        style={{ fontFamily: "'Roboto', sans-serif" }}
-                                    >
-                                        {product.price}
-                                    </p>
+
                                 </div>
 
                                 {/* Quick enquire on hover */}

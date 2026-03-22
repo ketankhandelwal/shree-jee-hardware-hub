@@ -1,21 +1,22 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Heart, Volume2, VolumeX } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const products = [
   {
-    name: "Gold & Black Button Knob",
-    price: "₹699",
+    name: "COLOURS ",
+    price: "₹390.00 - ₹1090.00",
     image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/product_videos/WhatsApp+Video+2026-03-01+at+15.44.14.mp4"
   },
   {
-    name: "Concealed Square Handle",
-    priceRange: "₹549 – ₹1,249",
+    name: "CH-538 PVD",
+    priceRange: "₹115.00/ - Per inch",
     image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/product_videos/WhatsApp+Video+2026-03-01+at+15.44.18.mp4",
   },
   {
-    name: "Regal Gold Knob",
-    priceRange: "₹499 – ₹699",
+    name: "MULTI - GOLD",
+    priceRange: "₹175.00 - ₹220.00/-",
     image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/product_videos/WhatsApp+Video+2026-03-01+at+15.44.22.mp4",
   },
   {
@@ -26,6 +27,7 @@ const products = [
 ];
 
 export const BestSellersSection = () => {
+  const navigate = useNavigate(); // 2. Initialize the hook
   const [wishlisted, setWishlisted] = useState<Record<number, boolean>>({});
   const [mutedStates, setMutedStates] = useState<Record<number, boolean>>({
     0: true, 1: true, 2: true, 3: true
@@ -61,15 +63,11 @@ export const BestSellersSection = () => {
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="group relative flex flex-col"
             >
-              {/* Media Container - Changed to aspect-[2/3] for more height */}
               <div className="relative bg-[#f7f7f7] aspect-[9/16] overflow-hidden rounded-sm">
                 {isVideo(product.image) ? (
                   <>
                     <video
                       src={product.image}
-                      /* Added 'object-center' to keep focus in the middle 
-                         and 'h-full w-full' to ensure it fills the new height
-                      */
                       className="w-full h-full object-cover object-center opacity-95 transition-transform duration-700 group-hover:scale-105"
                       autoPlay
                       loop
@@ -96,7 +94,6 @@ export const BestSellersSection = () => {
                   />
                 )}
 
-                {/* Wishlist button */}
                 <button
                   onClick={() => setWishlisted((prev) => ({ ...prev, [i]: !prev[i] }))}
                   className="absolute top-4 left-4 z-10 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors shadow-sm"
@@ -110,13 +107,12 @@ export const BestSellersSection = () => {
                 </button>
               </div>
 
-              {/* Product info */}
               <div className="pt-4 px-1">
                 <p className="text-[13px] font-medium text-foreground/90 uppercase tracking-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
                   {product.name}
                 </p>
                 <p className="text-xs font-bold text-[#1a3a3a] mt-1" style={{ fontFamily: "'Roboto', sans-serif" }}>
-                  {product.price || product.priceRange}
+                  {(product as any).price || (product as any).priceRange}
                 </p>
               </div>
             </motion.div>
@@ -124,7 +120,11 @@ export const BestSellersSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="border border-[#1a3a3a] text-[#1a3a3a] px-14 py-3.5 text-[11px] tracking-[0.2em] font-bold hover:bg-[#1a3a3a] hover:text-white transition-all duration-300">
+          {/* 3. Add the onClick handler to the button */}
+          <button
+            onClick={() => navigate("/products")}
+            className="border border-[#1a3a3a] text-[#1a3a3a] px-14 py-3.5 text-[11px] tracking-[0.2em] font-bold hover:bg-[#1a3a3a] hover:text-white transition-all duration-300"
+          >
             VIEW ALL PRODUCTS
           </button>
         </div>

@@ -10,33 +10,39 @@ const collections = [
     name: "Cabinet Handles"
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "public/Screenshot 2026-03-19 at 09.24.52.png",
     dark: false,
     name: "Telescopic Channel",
-    overlayText: {
-      eyebrow: "NEW COLLECTION",
-      title: "WOOD",
-    },
+    overlayText: null
+
+    // {
+    //   eyebrow: "NEW COLLECTION",
+    //   title: "WOOD",
+    // },
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "public/Screenshot 2026-03-19 at 09.28.25 copy.png",
     dark: false,
     name: "Cupboard Hinges",
-    overlayText: {
-      brand: "MANTARA",
-      sub: "DETAILS MATTER",
-      title: "YOUR\nSTYLE.\nCOUNTLESS\nCHOICES.",
-      footer: "LE | HOOKS | KNOBS",
-    },
+    overlayText: null
+
+    //  {
+    //   brand: "MANTARA",
+    //   sub: "DETAILS MATTER",
+    //   title: "YOUR\nSTYLE.\nCOUNTLESS\nCHOICES.",
+    //   footer: "LE | HOOKS | KNOBS",
+    // },
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "public/Screenshot 2026-03-19 at 09.42.34.png",
     name: "Stainless Steel Handle",
     dark: true,
-    overlayText: {
-      title: "EVERY\nDETAIL",
-      sub: "TELLS A STORY",
-    },
+    overlayText: null
+
+    // {
+    //   title: "EVERY\nDETAIL",
+    //   sub: "TELLS A STORY",
+    // },
   },
   {
     image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
@@ -74,10 +80,12 @@ const collections = [
     image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
     name: "Sofa Leg",
     dark: true,
-    overlayText: {
-      title: "EVERY\nDETAIL",
-      sub: "TELLS A STORY",
-    },
+    overlayText: null
+
+    // {
+    //   title: "EVERY\nDETAIL",
+    //   sub: "TELLS A STORY",
+    // },
   },
   {
     image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
@@ -86,7 +94,7 @@ const collections = [
     overlayText: null,
   },
   {
-    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.42.39+(1).jpeg",
+    image: "public/Screenshot 2026-03-19 at 09.51.32.png",
     name: "Tower Bolt",
     dark: false,
     overlayText: null,
@@ -165,9 +173,7 @@ export const ShowcaseSection = () => {
                 loading="lazy"
               />
 
-              {col.dark && (
-                <div className="absolute inset-0 bg-black/50" />
-              )}
+
 
               {/* Card 2: NEW COLLECTION · WOOD */}
               {col.overlayText && "eyebrow" in col.overlayText && (

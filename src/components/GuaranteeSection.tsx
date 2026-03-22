@@ -67,7 +67,7 @@ export const GuaranteeSection = () => {
             {topSellers.slice(startIndex, startIndex + visible).map((product, i) => (
               <div key={i} className="group flex flex-col">
                 {/* Image */}
-                <div className="relative aspect-square overflow-hidden bg-gray-50">
+                <div className="relative aspect-[3/4] overflow-hidden bg-gray-50">
                   <img
                     src={product.image}
                     alt={product.name}
