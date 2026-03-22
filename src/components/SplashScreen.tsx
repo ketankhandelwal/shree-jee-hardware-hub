@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const LOGO_URL =
-    "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/misc/Gemini_Generated_Image_rsedw7rsedw7rsed-removebg-preview+(2).png";
+// Removed LOGO_URL as it's no longer needed.
 
 /* ── tiny floating gold dot ── */
 const Particle = ({ x, y, delay }: { x: string; y: string; delay: number }) => (
@@ -47,6 +46,23 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
         return () => clearTimeout(t);
     }, [exiting, onDone]);
 
+    // Text to animate
+    const mainTitle = "SHREE JI HARDWARE";
+
+    // Animation variants for each character
+    const characterVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: (i: number) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: 0.5 + i * 0.1, // Staggered delay for each character
+                duration: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+            },
+        }),
+    };
+
     return (
         <AnimatePresence>
             {!exiting && (
@@ -57,7 +73,7 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
                 >
-                    {/* ── radial glow behind logo ── */}
+                    {/* ── radial glow ── */}
                     <motion.div
                         className="absolute w-[500px] h-[500px] rounded-full pointer-events-none"
                         style={{
@@ -134,23 +150,30 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
                             />
                         </motion.div>
 
-                        {/* Logo */}
+                        {/* --- NEW: Stylish Text in Left-to-Right Visibility Mode --- */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.7, filter: "blur(12px)" }}
-                            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                            className="flex overflow-hidden" // flex to layout characters horizontally
+                            initial="hidden"
+                            animate="visible"
                         >
-                            <motion.img
-                                src={LOGO_URL}
-                                alt="Shree Ji Hardwares"
-                                className="h-36 md:h-44 w-auto object-contain"
-                                animate={{ y: [0, -6, 0] }}
-                                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                            />
+                            {mainTitle.split("").map((char, index) => (
+                                <motion.span
+                                    key={index}
+                                    className="text-white text-5xl md:text-6xl" // Adjust size as needed
+                                    style={{
+                                        fontFamily: "'Great Vibes', cursive", // The stylish font
+                                        display: "inline-block" // Required for character-level animation
+                                    }}
+                                    variants={characterVariants}
+                                    custom={index} // Pass index to variants for stagger effect
+                                >
+                                    {char === " " ? "\u00A0" : char} {/* Handle spaces */}
+                                </motion.span>
+                            ))}
                         </motion.div>
 
-                        {/* Brand name letter-by-letter */}
-                        <motion.div
+                        {/* Brand name letter-by-letter (Old - can be removed or kept as a smaller sub-title) */}
+                        {/* <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 1.0, duration: 0.4 }}
@@ -173,6 +196,7 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
                                 </motion.span>
                             ))}
                         </motion.div>
+                        */}
 
                         {/* tagline */}
                         <motion.p
@@ -186,7 +210,7 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
                         </motion.p>
                     </div>
 
-                    {/* ── gold progress bar at very bottom ── */}
+                    {/* ── gold progress bar ── */}
                     <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/5">
                         <motion.div
                             className="h-full bg-gradient-to-r from-[#c9a84c]/60 via-[#c9a84c] to-[#c9a84c]/60"

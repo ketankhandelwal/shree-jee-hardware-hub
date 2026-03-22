@@ -3,94 +3,94 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 const ParticleField = () => {
-    const particles = Array.from({ length: 18 }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 3 + 1,
-        duration: Math.random() * 8 + 6,
-        delay: Math.random() * 4,
-    }));
+  const particles = Array.from({ length: 18 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 3 + 1,
+    duration: Math.random() * 8 + 6,
+    delay: Math.random() * 4,
+  }));
 
-    return (
-        <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-            {particles.map((p) => (
-                <motion.div
-                    key={p.id}
-                    style={{
-                        position: "absolute",
-                        left: `${p.x}%`,
-                        top: `${p.y}%`,
-                        width: p.size,
-                        height: p.size,
-                        borderRadius: "50%",
-                        background: "rgba(201,168,76,0.5)",
-                    }}
-                    animate={{
-                        y: [0, -30, 0],
-                        opacity: [0, 0.7, 0],
-                        scale: [0.5, 1.2, 0.5],
-                    }}
-                    transition={{
-                        duration: p.duration,
-                        delay: p.delay,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                />
-            ))}
-        </div>
-    );
+  return (
+    <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          style={{
+            position: "absolute",
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: p.size,
+            height: p.size,
+            borderRadius: "50%",
+            background: "rgba(201,168,76,0.5)",
+          }}
+          animate={{
+            y: [0, -30, 0],
+            opacity: [0, 0.7, 0],
+            scale: [0.5, 1.2, 0.5],
+          }}
+          transition={{
+            duration: p.duration,
+            delay: p.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </div>
+  );
 };
 
 const AnimatedNumber = ({ target }: { target: number }) => {
-    const [display, setDisplay] = useState(0);
-    const ref = useRef(false);
+  const [display, setDisplay] = useState(0);
+  const ref = useRef(false);
 
-    useEffect(() => {
-        if (ref.current) return;
-        ref.current = true;
-        let start = 0;
-        const step = () => {
-            start += Math.ceil((target - start) / 8);
-            setDisplay(start);
-            if (start < target) requestAnimationFrame(step);
-            else setDisplay(target);
-        };
-        setTimeout(() => requestAnimationFrame(step), 600);
-    }, [target]);
+  useEffect(() => {
+    if (ref.current) return;
+    ref.current = true;
+    let start = 0;
+    const step = () => {
+      start += Math.ceil((target - start) / 8);
+      setDisplay(start);
+      if (start < target) requestAnimationFrame(step);
+      else setDisplay(target);
+    };
+    setTimeout(() => requestAnimationFrame(step), 600);
+  }, [target]);
 
-    return <>{display}</>;
+  return <>{display}</>;
 };
 
 const stats = [
-    { value: 500, suffix: "+", label: "Happy Clients" },
-    { value: 12, suffix: " yrs", label: "Experience" },
-    { value: 98, suffix: "%", label: "Satisfaction" },
+  { value: 500, suffix: "+", label: "Happy Clients" },
+  { value: 6, suffix: " yrs", label: "Experience" },
+  { value: 98, suffix: "%", label: "Satisfaction" },
 ];
 
 export const ConsultationSection = () => {
-    const [hovered, setHovered] = useState(false);
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-    const rotateX = useTransform(mouseY, [-100, 100], [4, -4]);
-    const rotateY = useTransform(mouseX, [-100, 100], [-4, 4]);
+  const [hovered, setHovered] = useState(false);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useTransform(mouseY, [-100, 100], [4, -4]);
+  const rotateY = useTransform(mouseX, [-100, 100], [-4, 4]);
 
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        mouseX.set(e.clientX - rect.left - rect.width / 2);
-        mouseY.set(e.clientY - rect.top - rect.height / 2);
-    };
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left - rect.width / 2);
+    mouseY.set(e.clientY - rect.top - rect.height / 2);
+  };
 
-    const handleMouseLeave = () => {
-        animate(mouseX, 0, { duration: 0.6 });
-        animate(mouseY, 0, { duration: 0.6 });
-        setHovered(false);
-    };
+  const handleMouseLeave = () => {
+    animate(mouseX, 0, { duration: 0.6 });
+    animate(mouseY, 0, { duration: 0.6 });
+    setHovered(false);
+  };
 
-    return (
-        <>
-            <style>{`
+  return (
+    <>
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;500;600&family=Tenor+Sans&display=swap');
 
         .consult-section {
@@ -300,107 +300,107 @@ export const ConsultationSection = () => {
         .ornament-gem { width: 5px; height: 5px; background: #C9A84C; transform: rotate(45deg); opacity: 0.6; }
       `}</style>
 
-            <section className="consult-section">
-                <ParticleField />
-                <div className="consult-glow" />
-                <div className="corner-tl" />
-                <div className="corner-br" />
+      <section className="consult-section">
+        <ParticleField />
+        <div className="consult-glow" />
+        <div className="corner-tl" />
+        <div className="corner-br" />
 
-                <div style={{ position: "relative", zIndex: 2, maxWidth: "700px", margin: "0 auto" }}>
+        <div style={{ position: "relative", zIndex: 2, maxWidth: "700px", margin: "0 auto" }}>
 
-                    {/* Eyebrow */}
-                    <motion.p
-                        className="eyebrow"
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7 }}
-                    >
-                        Personalised Service
-                    </motion.p>
+          {/* Eyebrow */}
+          <motion.p
+            className="eyebrow"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            Personalised Service
+          </motion.p>
 
-                    {/* Ornament */}
-                    <motion.div
-                        className="ornament-row"
-                        initial={{ opacity: 0, scaleX: 0 }}
-                        whileInView={{ opacity: 1, scaleX: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.1 }}
-                    >
-                        <div className="ornament-bar" />
-                        <div className="ornament-gem" />
-                        <div className="ornament-bar" />
-                    </motion.div>
+          {/* Ornament */}
+          <motion.div
+            className="ornament-row"
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            <div className="ornament-bar" />
+            <div className="ornament-gem" />
+            <div className="ornament-bar" />
+          </motion.div>
 
-                    {/* Title */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 24 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.9, delay: 0.15 }}
-                    >
-                        <h2 className="consult-title">Book A Virtual</h2>
-                        <span className="consult-title-italic">Consultation</span>
-                    </motion.div>
+          {/* Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.15 }}
+          >
+            <h2 className="consult-title">Book A Virtual</h2>
+            <span className="consult-title-italic">Consultation</span>
+          </motion.div>
 
-                    {/* Body */}
-                    <motion.p
-                        className="consult-body"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.25 }}
-                    >
-                        Not sure what pieces fit your space? Connect with our expert
-                        representatives for a same-day virtual session — personalised advice,
-                        right from your home.
-                    </motion.p>
+          {/* Body */}
+          <motion.p
+            className="consult-body"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.25 }}
+          >
+            Not sure what pieces fit your space? Connect with our expert
+            representatives for a same-day virtual session — personalised advice,
+            right from your home.
+          </motion.p>
 
-                    {/* CTA */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.35 }}
-                        style={{ perspective: "800px" }}
-                        onMouseMove={handleMouseMove}
-                        onMouseEnter={() => setHovered(true)}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        <motion.div style={{ rotateX, rotateY, display: "inline-block" }}>
-                            <Link to="/contact" className="cta-btn">
-                                <span className="cta-text">Book Now</span>
-                                <div className="cta-arrow" />
-                            </Link>
-                        </motion.div>
-                    </motion.div>
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.35 }}
+            style={{ perspective: "800px" }}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <motion.div style={{ rotateX, rotateY, display: "inline-block" }}>
+              <Link to="/contact" className="cta-btn">
+                <span className="cta-text">Book Now</span>
+                <div className="cta-arrow" />
+              </Link>
+            </motion.div>
+          </motion.div>
 
-                    {/* Stats */}
-                    <motion.div
-                        className="stats-row"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                    >
-                        {stats.map((s, i) => (
-                            <motion.div
-                                key={i}
-                                className="stat-item"
-                                initial={{ opacity: 0, y: 12 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.7, delay: 0.55 + i * 0.12 }}
-                            >
-                                <div className="stat-value">
-                                    <AnimatedNumber target={s.value} />{s.suffix}
-                                </div>
-                                <div className="stat-label">{s.label}</div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+          {/* Stats */}
+          <motion.div
+            className="stats-row"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            {stats.map((s, i) => (
+              <motion.div
+                key={i}
+                className="stat-item"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.55 + i * 0.12 }}
+              >
+                <div className="stat-value">
+                  <AnimatedNumber target={s.value} />{s.suffix}
                 </div>
-            </section>
-        </>
-    );
+                <div className="stat-label">{s.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+    </>
+  );
 };
