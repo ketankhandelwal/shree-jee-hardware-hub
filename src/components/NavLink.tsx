@@ -19,7 +19,7 @@ const favourites = [
   {
     name: "CABINET HANDLE",
     price: "Starts from Rs. 65 per inch",
-    image: "/public/Screenshot 2026-03-22 at 09.08.59.png",
+    image: "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/Screenshot+2026-03-22+at+09.08.59.png",
     tag: "Minimalist",
   },
   {
