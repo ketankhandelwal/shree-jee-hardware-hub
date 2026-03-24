@@ -58,7 +58,7 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
             transition: {
                 delay: 0.5 + i * 0.1, // Staggered delay for each character
                 duration: 0.6,
-                ease: [0.16, 1, 0.3, 1],
+                ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
             },
         }),
     };
@@ -152,14 +152,14 @@ export const SplashScreen = ({ onDone }: { onDone: () => void }) => {
 
                         {/* --- NEW: Stylish Text in Left-to-Right Visibility Mode --- */}
                         <motion.div
-                            className="flex overflow-hidden" // flex to layout characters horizontally
+                            className="flex flex-wrap justify-center w-full px-4 overflow-hidden text-center leading-tight" // flex to layout characters horizontally
                             initial="hidden"
                             animate="visible"
                         >
                             {mainTitle.split("").map((char, index) => (
                                 <motion.span
                                     key={index}
-                                    className="text-white text-5xl md:text-6xl" // Adjust size as needed
+                                    className="text-white text-4xl sm:text-5xl md:text-6xl" // Adjust size as needed
                                     style={{
                                         fontFamily: "'Great Vibes', cursive", // The stylish font
                                         display: "inline-block" // Required for character-level animation
