@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Heart, ArrowUpRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Heart, ArrowUpRight, X, MessageCircle, ZoomIn } from "lucide-react";
+
+const WHATSAPP_NUMBER = "918209815805";
 
 const topSellers = [
   {
@@ -11,7 +13,7 @@ const topSellers = [
       "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/cabinet_handles/WhatsApp+Image+2026-03-01+at+15.44.12.jpeg",
   },
   {
-    name: "ALDROPS COLLECTIOSN",
+    name: "ALDROPS COLLECTIONS",
     category: "AL-DROPS",
     price: "Contact for price",
     image:
@@ -30,16 +32,24 @@ const topSellers = [
     price: "Rs. 120.00",
     image:
       "https://shree-ji-hardware.s3.ap-south-1.amazonaws.com/hinge/Screenshot+2026-03-02+at+09.31.13.png",
-  }
+  },
 ];
 
 const VISIBLE = 4;
+
+const openWhatsApp = (productName: string, price: string) => {
+  const msg = encodeURIComponent(
+    `Hi! I'm interested in *${productName}* (${price}) from Shree Ji Hardware. Please share more details and pricing.`
+  );
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
+};
 
 export const GuaranteeSection = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [wishlisted, setWishlisted] = useState<Record<number, boolean>>({});
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [modalProduct, setModalProduct] = useState<(typeof topSellers)[0] | null>(null);
 
   const canLeft = startIndex > 0;
   const canRight = startIndex < topSellers.length - VISIBLE;
@@ -73,7 +83,6 @@ export const GuaranteeSection = () => {
           padding: 0 40px;
         }
 
-        /* Header */
         .ts-header {
           display: flex;
           align-items: flex-end;
@@ -127,7 +136,6 @@ export const GuaranteeSection = () => {
           font-weight: 400;
         }
 
-        /* Arrow controls */
         .ts-controls {
           display: flex;
           align-items: center;
@@ -178,7 +186,6 @@ export const GuaranteeSection = () => {
           cursor: not-allowed;
         }
 
-        /* Grid */
         .ts-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
@@ -195,7 +202,6 @@ export const GuaranteeSection = () => {
           .ts-inner { padding: 0 16px; }
         }
 
-        /* Card */
         .ts-card {
           display: flex;
           flex-direction: column;
@@ -221,7 +227,6 @@ export const GuaranteeSection = () => {
           transform: scale(1.07);
         }
 
-        /* Soft dark bottom overlay on hover */
         .ts-card-overlay {
           position: absolute;
           inset: 0;
@@ -238,7 +243,6 @@ export const GuaranteeSection = () => {
 
         .ts-card:hover .ts-card-overlay { opacity: 1; }
 
-        /* Wishlist btn */
         .ts-wish-btn {
           position: absolute;
           top: 12px;
@@ -267,7 +271,6 @@ export const GuaranteeSection = () => {
 
         .ts-wish-btn:hover { background: white; }
 
-        /* Quick view */
         .ts-quick {
           position: absolute;
           bottom: 0;
@@ -295,7 +298,6 @@ export const GuaranteeSection = () => {
           transform: translateY(0);
         }
 
-        /* Card info */
         .ts-card-info {
           padding: 14px 2px 0;
           display: flex;
@@ -329,18 +331,141 @@ export const GuaranteeSection = () => {
           margin-top: 8px;
         }
 
+        .ts-card-price-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 6px;
+          gap: 8px;
+        }
+
         .ts-card-price {
           font-family: 'Tenor Sans', sans-serif;
           font-size: 12px;
           color: #1a3a3a;
           letter-spacing: 0.06em;
-          margin-top: 6px;
+        }
+
+        .ts-enquire-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          background: #1a3a3a;
+          color: white;
+          border: none;
+          padding: 6px 12px;
+          font-family: 'Cinzel', serif;
+          font-size: 7.5px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: background 0.2s, transform 0.2s;
+          border-radius: 1px;
+          white-space: nowrap;
+        }
+        .ts-enquire-btn:hover {
+          background: #0d1f1f;
+          transform: scale(1.04);
         }
 
         .ts-bottom-rule {
           height: 1px;
           background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent);
           margin-top: 72px;
+        }
+
+        /* ── Image Lightbox ── */
+        .ts-lightbox-backdrop {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.93);
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+        }
+
+        .ts-lightbox-content {
+          position: relative;
+          max-width: 560px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+
+        .ts-lightbox-img {
+          width: 100%;
+          max-height: 75vh;
+          object-fit: contain;
+          border-radius: 2px;
+          box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+
+        .ts-lightbox-close {
+          position: absolute;
+          top: -48px;
+          right: 0;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.12);
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .ts-lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+        .ts-lightbox-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          gap: 16px;
+        }
+
+        .ts-lightbox-info { flex: 1; }
+        .ts-lightbox-name {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 22px;
+          font-weight: 600;
+          color: white;
+        }
+        .ts-lightbox-price {
+          font-family: 'Tenor Sans', sans-serif;
+          font-size: 13px;
+          color: rgba(201,168,76,0.85);
+          letter-spacing: 0.1em;
+          margin-top: 3px;
+        }
+
+        .ts-lightbox-enquire {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: #1a3a3a;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          font-family: 'Cinzel', serif;
+          font-size: 9.5px;
+          font-weight: 600;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: background 0.2s, transform 0.2s;
+          border-radius: 2px;
+          white-space: nowrap;
+        }
+        .ts-lightbox-enquire:hover {
+          background: #0d1f1f;
+          transform: scale(1.04);
         }
       `}</style>
 
@@ -411,6 +536,7 @@ export const GuaranteeSection = () => {
                     transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
                     onMouseEnter={() => setHoveredCard(globalIndex)}
                     onMouseLeave={() => setHoveredCard(null)}
+                    onClick={() => setModalProduct(product)}
                   >
                     <div className="ts-card-media">
                       <img src={product.image} alt={product.name} loading="lazy" />
@@ -419,9 +545,10 @@ export const GuaranteeSection = () => {
                       {/* Wishlist */}
                       <button
                         className="ts-wish-btn"
-                        onClick={() =>
-                          setWishlisted((prev) => ({ ...prev, [globalIndex]: !prev[globalIndex] }))
-                        }
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setWishlisted((prev) => ({ ...prev, [globalIndex]: !prev[globalIndex] }));
+                        }}
                         aria-label="Add to wishlist"
                       >
                         <AnimatePresence mode="wait">
@@ -444,7 +571,7 @@ export const GuaranteeSection = () => {
 
                       {/* Quick View */}
                       <div className="ts-quick">
-                        <ArrowUpRight size={10} />
+                        <ZoomIn size={10} />
                         Quick View
                       </div>
                     </div>
@@ -459,7 +586,16 @@ export const GuaranteeSection = () => {
                         animate={{ scaleX: hoveredCard === globalIndex ? 1 : 0 }}
                         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                       />
-                      <p className="ts-card-price">{product.price}</p>
+                      <div className="ts-card-price-row">
+                        <p className="ts-card-price">{product.price}</p>
+                        <button
+                          className="ts-enquire-btn"
+                          onClick={(e) => { e.stopPropagation(); openWhatsApp(product.name, product.price); }}
+                        >
+                          <MessageCircle size={9} />
+                          Enquire
+                        </button>
+                      </div>
                     </div>
                   </motion.div>
                 );
@@ -470,6 +606,49 @@ export const GuaranteeSection = () => {
           <div className="ts-bottom-rule" />
         </div>
       </section>
+
+      {/* ── Image Lightbox ── */}
+      <AnimatePresence>
+        {modalProduct && (
+          <motion.div
+            className="ts-lightbox-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setModalProduct(null)}
+          >
+            <motion.div
+              className="ts-lightbox-content"
+              initial={{ scale: 0.88, opacity: 0, y: 24 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className="ts-lightbox-close" onClick={() => setModalProduct(null)} aria-label="Close">
+                <X size={18} color="white" />
+              </button>
+
+              <img className="ts-lightbox-img" src={modalProduct.image} alt={modalProduct.name} />
+
+              <div className="ts-lightbox-footer">
+                <div className="ts-lightbox-info">
+                  <p className="ts-lightbox-name">{modalProduct.name}</p>
+                  <p className="ts-lightbox-price">{modalProduct.price}</p>
+                </div>
+                <button
+                  className="ts-lightbox-enquire"
+                  onClick={() => openWhatsApp(modalProduct.name, modalProduct.price)}
+                >
+                  <MessageCircle size={13} />
+                  Enquire Now
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

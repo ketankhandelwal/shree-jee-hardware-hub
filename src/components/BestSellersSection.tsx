@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Volume2, VolumeX, ArrowUpRight } from "lucide-react";
+import { Heart, Volume2, VolumeX, ArrowUpRight, X, MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
+const WHATSAPP_NUMBER = "918209815805";
 
 const products = [
   {
@@ -48,6 +50,13 @@ const tagColors: Record<string, string> = {
   Premium: "#7b68c8",
 };
 
+const openWhatsApp = (productName: string, price: string) => {
+  const msg = encodeURIComponent(
+    `Hi! I'm interested in *${productName}* (${price}) from Shree Ji Hardware. Please share more details.`
+  );
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
+};
+
 export const BestSellersSection = () => {
   const navigate = useNavigate();
   const [wishlisted, setWishlisted] = useState<Record<number, boolean>>({});
@@ -55,11 +64,20 @@ export const BestSellersSection = () => {
     0: true, 1: true, 2: true, 3: true,
   });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [modalProduct, setModalProduct] = useState<(typeof products)[0] | null>(null);
+  const [modalMuted, setModalMuted] = useState(false);
 
   const toggleMute = (e: React.MouseEvent, index: number) => {
     e.stopPropagation();
     setMutedStates((prev) => ({ ...prev, [index]: !prev[index] }));
   };
+
+  const openModal = (product: (typeof products)[0]) => {
+    setModalProduct(product);
+    setModalMuted(false);
+  };
+
+  const closeModal = () => setModalProduct(null);
 
   return (
     <>
@@ -389,6 +407,115 @@ export const BestSellersSection = () => {
         }
         .orn-bar { height: 1px; width: 40px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5)); }
         .orn-dot { width: 4px; height: 4px; background: #C9A84C; transform: rotate(45deg); opacity: 0.7; }
+
+        /* ── Media Modal ── */
+        .bs-modal-backdrop {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.92);
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+        }
+
+        .bs-modal-content {
+          position: relative;
+          max-width: 420px;
+          width: 100%;
+          max-height: 92vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+
+        .bs-modal-media {
+          width: 100%;
+          aspect-ratio: 9/16;
+          object-fit: cover;
+          border-radius: 2px;
+          box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+
+        .bs-modal-close {
+          position: absolute;
+          top: -48px;
+          right: 0;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.12);
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .bs-modal-close:hover { background: rgba(255,255,255,0.22); }
+
+        .bs-modal-controls {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+        }
+
+        .bs-modal-mute {
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.1);
+          border: 1px solid rgba(255,255,255,0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .bs-modal-mute:hover { background: rgba(255,255,255,0.2); }
+
+        .bs-modal-enquire {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: #1a3a3a;
+          color: white;
+          border: none;
+          padding: 12px 28px;
+          font-family: 'Cinzel', serif;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.25em;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: background 0.25s, transform 0.2s;
+          border-radius: 2px;
+        }
+        .bs-modal-enquire:hover {
+          background: #0d1f1f;
+          transform: scale(1.03);
+        }
+
+        .bs-modal-info {
+          text-align: center;
+        }
+        .bs-modal-name {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 24px;
+          font-weight: 600;
+          color: white;
+          letter-spacing: 0.02em;
+        }
+        .bs-modal-price {
+          font-family: 'Tenor Sans', sans-serif;
+          font-size: 13px;
+          color: rgba(201,168,76,0.85);
+          letter-spacing: 0.1em;
+          margin-top: 4px;
+        }
       `}</style>
 
       <section className="bs-section">
@@ -437,6 +564,7 @@ export const BestSellersSection = () => {
                 transition={{ delay: i * 0.12, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => openModal(product)}
               >
                 <div className="card-media">
                   {isVideo(product.image) ? (
@@ -473,7 +601,7 @@ export const BestSellersSection = () => {
                   {/* Wishlist */}
                   <button
                     className="wishlist-btn"
-                    onClick={() => setWishlisted((prev) => ({ ...prev, [i]: !prev[i] }))}
+                    onClick={(e) => { e.stopPropagation(); setWishlisted((prev) => ({ ...prev, [i]: !prev[i] })); }}
                     aria-label="Wishlist"
                   >
                     <AnimatePresence mode="wait">
@@ -538,6 +666,73 @@ export const BestSellersSection = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* ── Media Modal ── */}
+      <AnimatePresence>
+        {modalProduct && (
+          <motion.div
+            className="bs-modal-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={closeModal}
+          >
+            <motion.div
+              className="bs-modal-content"
+              initial={{ scale: 0.85, opacity: 0, y: 30 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className="bs-modal-close" onClick={closeModal} aria-label="Close">
+                <X size={18} color="white" />
+              </button>
+
+              {isVideo(modalProduct.image) ? (
+                <video
+                  className="bs-modal-media"
+                  src={modalProduct.image}
+                  autoPlay
+                  loop
+                  muted={modalMuted}
+                  playsInline
+                />
+              ) : (
+                <img className="bs-modal-media" src={modalProduct.image} alt={modalProduct.name} />
+              )}
+
+              <div className="bs-modal-controls">
+                {isVideo(modalProduct.image) ? (
+                  <button
+                    className="bs-modal-mute"
+                    onClick={() => setModalMuted((m) => !m)}
+                    aria-label="Toggle sound"
+                  >
+                    {modalMuted
+                      ? <VolumeX size={16} color="white" />
+                      : <Volume2 size={16} color="white" />}
+                  </button>
+                ) : <div />}
+
+                <div className="bs-modal-info">
+                  <p className="bs-modal-name">{modalProduct.name}</p>
+                  <p className="bs-modal-price">{modalProduct.price}</p>
+                </div>
+
+                <button
+                  className="bs-modal-enquire"
+                  onClick={() => openWhatsApp(modalProduct.name, modalProduct.price)}
+                >
+                  <MessageCircle size={14} />
+                  Enquire Now
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

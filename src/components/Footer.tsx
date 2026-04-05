@@ -1,9 +1,20 @@
-import { Instagram, Phone, MapPin, Mail } from "lucide-react";
+import { Instagram, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const quickLinks = [
+  { label: "Home",       href: "/",             isRouter: true  },
+  { label: "Products",   href: "/products",     isRouter: true  },
+  { label: "Collections", href: "/#collections", isRouter: false },
+  { label: "Catalogue",  href: "/#catalog",     isRouter: false },
+  { label: "About Us",   href: "/about",        isRouter: true  },
+  { label: "Contact Us", href: "/contact",      isRouter: true  },
+];
 
 export const Footer = () => (
   <footer className="bg-[#1a3a3a] text-white">
     <div className="px-4 md:px-8 lg:px-16 py-16">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+
         {/* Brand */}
         <div className="md:col-span-1">
           <h3
@@ -29,35 +40,27 @@ export const Footer = () => (
             Quick Links
           </h4>
           <ul className="space-y-3">
-            {["Handles", "Knobs", "Hooks", "Collections", "Bundles", "Blogs"].map((link) => (
-              <li key={link}>
-                <a
-                  href="#"
-                  className="text-sm text-white/55 hover:text-white transition-colors"
-                >
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Customer Service */}
-        <div>
-          <h4
-            className="text-xs font-semibold tracking-[0.2em] uppercase mb-6 text-white/80"
-            style={{ fontFamily: "'Roboto', sans-serif" }}
-          >
-            Customer Service
-          </h4>
-          <ul className="space-y-3">
-            {["About Us", "Contact Us", "Privacy Policy", "Refund Policy", "Terms of Service", "FAQ"].map((link) => (
-              <li key={link}>
-                <a href="#" className="text-sm text-white/55 hover:text-white transition-colors">
-                  {link}
-                </a>
-              </li>
-            ))}
+            {quickLinks.map(({ label, href, isRouter }) =>
+              isRouter ? (
+                <li key={label}>
+                  <Link
+                    to={href}
+                    className="text-sm text-white/55 hover:text-white transition-colors"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ) : (
+                <li key={label}>
+                  <a
+                    href={href}
+                    className="text-sm text-white/55 hover:text-white transition-colors"
+                  >
+                    {label}
+                  </a>
+                </li>
+              )
+            )}
           </ul>
         </div>
 
@@ -119,18 +122,21 @@ export const Footer = () => (
 
     {/* Bottom bar */}
     <div className="border-t border-white/10">
-      <div className="px-4 md:px-8 lg:px-16 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div className="px-4 md:px-8 lg:px-16 py-5 flex flex-col items-center gap-2 text-center">
         <p className="text-xs text-white/35" style={{ fontFamily: "'Roboto', sans-serif" }}>
           © 2026 Shree Ji Hardwares. All rights reserved.
         </p>
-        <div className="flex items-center gap-6">
-          <a href="#" className="text-xs text-white/35 hover:text-white/70 transition-colors" style={{ fontFamily: "'Roboto', sans-serif" }}>
-            Privacy Policy
+        <p className="text-xs text-white/25" style={{ fontFamily: "'Roboto', sans-serif" }}>
+          Designed &amp; Developed by{" "}
+          <a
+            href="https://www.instagram.com/ketan.khandelwal.1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#C9A84C]/70 hover:text-[#C9A84C] transition-colors underline underline-offset-2"
+          >
+            Ketan Khandelwal
           </a>
-          <a href="#" className="text-xs text-white/35 hover:text-white/70 transition-colors" style={{ fontFamily: "'Roboto', sans-serif" }}>
-            Terms
-          </a>
-        </div>
+        </p>
       </div>
     </div>
   </footer>

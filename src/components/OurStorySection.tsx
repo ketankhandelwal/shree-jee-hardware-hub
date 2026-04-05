@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, X, ZoomIn } from "lucide-react";
 
 const moodBoards = [
   {
@@ -45,10 +46,11 @@ const moodBoards = [
   },
 ];
 
-const spring = { type: "spring", stiffness: 280, damping: 24, mass: 0.9 };
+const spring = { type: "spring" as const, stiffness: 280, damping: 24, mass: 0.9 };
 
 export const OurStorySection = () => {
   const navigate = useNavigate();
+  const [modalImage, setModalImage] = useState<{ src: string; label: string } | null>(null);
 
   return (
     <>
@@ -133,6 +135,69 @@ export const OurStorySection = () => {
 
         .mood-card:hover .mood-card-img img {
           transform: scale(1.08);
+        }
+
+        .mood-card-zoom {
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.35);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+        .mood-card:hover .mood-card-zoom { opacity: 1; }
+
+        /* Lightbox */
+        .os-lightbox-backdrop {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.94);
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+        }
+        .os-lightbox-content {
+          position: relative;
+          max-width: 600px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+        }
+        .os-lightbox-img {
+          width: 100%;
+          max-height: 80vh;
+          object-fit: contain;
+          border-radius: 2px;
+          box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+        }
+        .os-lightbox-close {
+          position: absolute;
+          top: -48px;
+          right: 0;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.12);
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .os-lightbox-close:hover { background: rgba(255,255,255,0.24); }
+        .os-lightbox-label {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 20px;
+          font-weight: 600;
+          color: white;
+          letter-spacing: 0.05em;
         }
 
         .mood-card-dots {
@@ -333,10 +398,12 @@ export const OurStorySection = () => {
                   boxShadow: "0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(201,168,76,0.15)",
                   transition: { type: "spring", stiffness: 380, damping: 22 },
                 }}
+                onClick={() => setModalImage({ src: board.image, label: board.label })}
               >
                 <div className="mood-card-inner">
-                  <div className="mood-card-img">
+                  <div className="mood-card-img" style={{ position: "relative" }}>
                     <img src={board.image} alt={board.label} loading="lazy" />
+                    <div className="mood-card-zoom"><ZoomIn size={22} color="white" /></div>
                   </div>
                   <div className="mood-card-dots">
                     {[0, 1, 2].map((d) => (
@@ -415,6 +482,35 @@ export const OurStorySection = () => {
 
         </div>
       </section>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {modalImage && (
+          <motion.div
+            className="os-lightbox-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            onClick={() => setModalImage(null)}
+          >
+            <motion.div
+              className="os-lightbox-content"
+              initial={{ scale: 0.88, opacity: 0, y: 24 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className="os-lightbox-close" onClick={() => setModalImage(null)} aria-label="Close">
+                <X size={18} color="white" />
+              </button>
+              <img className="os-lightbox-img" src={modalImage.src} alt={modalImage.label} />
+              <p className="os-lightbox-label">{modalImage.label}</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
