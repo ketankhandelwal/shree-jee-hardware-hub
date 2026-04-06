@@ -92,6 +92,8 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -111,6 +113,62 @@ export const Navbar = () => {
     closeTimer.current = setTimeout(() => setDropdownOpen(false), 120);
   };
 
+  const closeAll = () => {
+    setOpen(false);
+    setDropdownOpen(false);
+    setSearchOpen(false);
+  };
+
+  const scrollToSection = (id: string) => {
+    closeAll();
+    // If on a subpage, we should ideally redirect to home first. 
+    // For now, assuming hash scrolling on the same page for simple anchors.
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = `/#${id}`;
+    }
+  };
+
+  const SITE_SECTIONS = [
+    { label: "HOME", action: () => { closeAll(); window.scrollTo({ top: 0, behavior: "smooth" }); } },
+    { label: "PRODUCTS", action: () => { closeAll(); window.location.href = "/products"; } },
+    { label: "CATALOG", action: () => scrollToSection("catalog") },
+    { label: "CONTACT US", action: () => { closeAll(); window.location.href = "/contact"; } },
+    { label: "SHOWCASE", action: () => scrollToSection("showcase") },
+  ];
+
+  const getFilteredSuggestions = () => {
+    const query = searchQuery.toLowerCase().trim();
+    if (!query) return { cats: categories, sections: SITE_SECTIONS };
+
+    const filteredCats = categories.filter(c => c.label.toLowerCase().includes(query));
+    const filteredSections = SITE_SECTIONS.filter(s => s.label.toLowerCase().includes(query));
+
+    const sortByMatch = (a: any, b: any) => {
+      const aLower = a.label.toLowerCase();
+      const bLower = b.label.toLowerCase();
+      if (aLower.startsWith(query) && !bLower.startsWith(query)) return -1;
+      if (!aLower.startsWith(query) && bLower.startsWith(query)) return 1;
+      return aLower.localeCompare(bLower);
+    };
+
+    return {
+      cats: filteredCats.sort(sortByMatch),
+      sections: filteredSections.sort(sortByMatch)
+    };
+  };
+
+  const { cats: sugCats, sections: sugSections } = getFilteredSuggestions();
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      closeAll();
+      window.location.href = `/products?q=${encodeURIComponent(searchQuery.trim())}`;
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50">
@@ -120,13 +178,17 @@ export const Navbar = () => {
           {/* Left: Menu + Search */}
           <div className="flex items-center gap-5">
             <button
-              onClick={() => setOpen(!open)}
+              onClick={() => { setOpen(!open); setSearchOpen(false); }}
               className="lg:hidden text-white/80 hover:text-white transition-colors"
               aria-label="Menu"
             >
               {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
-            <button className="text-white/80 hover:text-white transition-colors" aria-label="Search">
+            <button
+              onClick={() => { setSearchOpen(!searchOpen); setOpen(false); }}
+              className={`transition-colors ${searchOpen ? "text-[#c9a84c]" : "text-white/80 hover:text-white"}`}
+              aria-label="Search"
+            >
               <Search className="w-5 h-5" />
             </button>
           </div>
@@ -150,7 +212,6 @@ export const Navbar = () => {
             >
               <PenLine className="h-5 w-5" />
             </a>
-
           </div>
         </div>
 
@@ -188,7 +249,6 @@ export const Navbar = () => {
               );
             }
 
-            // /#catalog and similar hash-path links need a plain <a> so the browser handles the scroll
             const isHashPath = href.includes("#");
             const isRouter = href.startsWith("/") && !isHashPath;
             return isRouter ? (
@@ -213,6 +273,92 @@ export const Navbar = () => {
           })}
         </nav>
       </div>
+
+      {/* Search Overlay */}
+      <AnimatePresence>
+        {searchOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+            className="fixed inset-0 top-[60px] md:top-[80px] z-[400] bg-[#0d1f1f]/95 backdrop-blur-2xl flex justify-center overflow-y-auto"
+          >
+            <div className="w-full max-w-3xl px-6 py-12 md:py-20 flex flex-col gap-10">
+              <form onSubmit={handleSearchSubmit} className="relative flex items-center border-b-2 border-[#c9a84c]/40 focus-within:border-[#c9a84c] transition-colors pb-4 group">
+                <Search className="w-6 h-6 text-[#c9a84c] mr-5" />
+                <input
+                  type="text"
+                  placeholder="What are you looking for?"
+                  autoFocus
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-transparent border-none outline-none text-2xl md:text-4xl font-bold text-white placeholder-white/20 tracking-tighter"
+                  style={{ fontFamily: "'Roboto', sans-serif" }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setSearchOpen(false)}
+                  className="p-2 hover:bg-white/5 rounded-full transition-colors ml-4"
+                >
+                  <X className="w-6 h-6 text-white/40" />
+                </button>
+              </form>
+
+              <div className="flex flex-col gap-12">
+                {/* Site sections suggestions */}
+                {sugSections.length > 0 && (
+                  <div className="flex flex-col gap-5">
+                    <p className="text-[10px] tracking-[0.4em] font-black text-[#c9a84c] uppercase">Quick Access</p>
+                    <div className="flex flex-wrap gap-3">
+                      {sugSections.map(sec => (
+                        <button
+                          key={sec.label}
+                          onClick={sec.action}
+                          className="px-5 py-2.5 rounded-full border border-white/10 text-[11px] font-bold text-white hover:bg-[#c9a84c] hover:border-[#c9a84c] hover:text-[#0d1f1f] transition-all transform hover:-translate-y-0.5 tracking-widest uppercase"
+                        >
+                          {sec.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Categories suggestions */}
+                {sugCats.length > 0 && (
+                  <div className="flex flex-col gap-5">
+                    <p className="text-[10px] tracking-[0.4em] font-black text-[#c9a84c] uppercase">Categories</p>
+                    <div className="flex flex-wrap gap-3">
+                      {sugCats.map(cat => (
+                        <button
+                          key={cat.id}
+                          onClick={() => { closeAll(); window.location.href = `/products/${cat.id}`; }}
+                          className="px-5 py-2.5 rounded-full border border-white/10 text-[11px] font-bold text-white hover:bg-white hover:text-[#0d1f1f] hover:border-white transition-all transform hover:-translate-y-0.5 tracking-widest uppercase"
+                        >
+                          {cat.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* All products link if query length is high or no cats */}
+                {searchQuery && sugCats.length === 0 && (
+                  <div className="text-center py-10">
+                    <p className="text-white/40 text-lg mb-6">No direct matches for "{searchQuery}"</p>
+                    <button
+                      onClick={handleSearchSubmit}
+                      className="px-8 py-4 bg-[#c9a84c] text-[#0d1f1f] text-xs font-black tracking-[0.3em] uppercase hover:bg-white transition-colors"
+                    >
+                      SEARCH ALL COLLECTIONS
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Mobile Nav Drawer */}
       <AnimatePresence>
